@@ -10,14 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "push_swap.h"
+#include <stdlib.h>
 
-push_swap()
+typedef struct stack
 {
-	//the magic;
-}
+	int				data;
+	struct stack	*next;
+	struct stack	*prev;
+	struct stack	*first;
+	struct stack	*last;
+}					stack;
 
-sa()
+stack *A = NULL;
+stack *B = NULL;
+
+sa ()
 {
 	// sa (swap a): Swap the first 2 elements at the top of stack a.
 	// Do nothing if there is only one element or none.
@@ -103,3 +110,12 @@ The last element becomes the first one.
 rrb (reverse rotate b): Shift down all elements of stack b by 1.
 The last element becomes the first one.
 rrr : rra and rrb at the same time. */
+
+/* NORM
+• A structure’s name must start by s_.
+• A typedef’s name must start by t_.
+• A union’s name must start by u_.
+• An enum’s name must start by e_.
+• A global’s name must start by g_.
+• Identifiers, like variables, functions names, user defined types, can only contain
+lowercases, digits and ’_’ (snake_case). No capital letters are allowed.*/
