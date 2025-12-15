@@ -10,19 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
-typedef struct stack
+# include <stdlib.h>
+
+typedef struct t_node
 {
 	int				data;
-	struct stack	*next;
-	struct stack	*prev;
-	struct stack	*first;
-	struct stack	*last;
-}					stack;
+	struct t_node	*next;
+	struct t_node	*prev;
+}					t_node;
 
-stack *A = NULL;
-stack *B = NULL;
+typedef struct t_stack
+{
+	struct t_node	*first;
+	struct t_node	*last;
+}					t_stack;
+
 
 sa ()
 {
@@ -83,6 +88,7 @@ rrr()
 	// rrr : rra and rrb at the same time.
 }
 
+#endif
 /* 
 • You have 2 stacks named a and b.
 • At the beginning:

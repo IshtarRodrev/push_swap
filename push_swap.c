@@ -103,3 +103,12 @@ The last element becomes the first one.
 rrb (reverse rotate b): Shift down all elements of stack b by 1.
 The last element becomes the first one.
 rrr : rra and rrb at the same time. */
+
+/* NORM
+• A structure’s name must start by s_.
+• A typedef’s name must start by t_.
+• A union’s name must start by u_.
+• An enum’s name must start by e_.
+• A global’s name must start by g_.
+• Identifiers, like variables, functions names, user defined types, can only contain
+lowercases, digits and ’_’ (snake_case). No capital letters are allowed.*/
