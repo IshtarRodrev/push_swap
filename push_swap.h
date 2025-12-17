@@ -28,7 +28,6 @@ typedef struct t_stack
 	struct t_node	*last;
 }					t_stack;
 
-
 sa ()
 {
 	// sa (swap a): Swap the first 2 elements at the top of stack a.
