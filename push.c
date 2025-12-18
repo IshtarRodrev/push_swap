@@ -12,29 +12,35 @@
 
 # include "push_swap.h"// TODO
 //https://www.geeksforgeeks.org/dsa/insertion-in-doubly-circular-linked-list/
+
+void	push(t_stack *src_stk, t_stack *dst_stk)
+{
+	t_node	*node;
+
+	if (!src_stk || !dst_stk)
+		return ;
+	node = src_stk->first;
+	if (dst_stk->first == NULL)
+		dst_stk->last = node;
+	src_stk->first = node->next;
+	if (src_stk->first)
+		src_stk->first->prev = NULL;
+	node->next = dst_stk->first;
+	if (dst_stk->first)
+		dst_stk->first->prev = node;
+	dst_stk->first = node;
+}
 void	pa(t_stack *b, t_stack *a)
 {
 	// pa (push a): Take the first element at the top of b and put it at the top of a.
 	// Do nothing if b is empty.
-	t_node	*node;
-
-	if (!b || !a)
-		return ;
-	node = b->first;
-	if (a->first == NULL)
-		a->last = node;
-	b->first = node->next;
-	if (b->first)
-		b->first->prev = NULL;
-	node->next = a->first;
-	if (a->first)
-		a->first->prev = node;
-	a->first = node;
+	push(b, a);
+	ft_printf("pa\n");
 }
-
-
-pb()
+void	pb(t_stack *b, t_stack *a)
 {
 	// pb (push b): Take the first element at the top of a and put it at the top of b.
 	// Do nothing if a is empty.
+	push(a, b);
+	ft_printf("pb\n");
 }
