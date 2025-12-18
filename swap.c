@@ -10,7 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include// TODO
+# include"push_swap.h"// TODO
+
+void	swap(t_stack *src_stk)
+{
+	t_node	*tmp;
+
+	if (!src_stk)
+		return ;	
+	tmp = src_stk->first;
+	if (src_stk->first == NULL || tmp->next == NULL)
+		return ;
+	tmp->next
+}
 
 sa()
 {
