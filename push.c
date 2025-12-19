@@ -30,6 +30,7 @@ void	push(t_stack *src_stk, t_stack *dst_stk)
 		dst_stk->first->prev = node;
 	dst_stk->first = node;
 }
+
 void	pa(t_stack *b, t_stack *a)
 {
 	// pa (push a): Take the first element at the top of b and put it at the top of a.
@@ -37,6 +38,7 @@ void	pa(t_stack *b, t_stack *a)
 	push(b, a);
 	ft_printf("pa\n");
 }
+
 void	pb(t_stack *b, t_stack *a)
 {
 	// pb (push b): Take the first element at the top of a and put it at the top of b.

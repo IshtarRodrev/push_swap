@@ -3,18 +3,56 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akechedz <akechedz@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: akechedz <akechedz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/12 07:04:58 by akechedz          #+#    #+#             */
-/*   Updated: 2025/12/12 07:04:58 by akechedz         ###   ########.fr       */
+/*   Created: 2025/12/11 20:23:33 by akechedz          #+#    #+#             */
+/*   Updated: 2025/12/19 18:51:40 by akechedz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 # include "push_swap.h"
 
-push_swap()
+	push_swap()
 {
 	//the magic;
+}
+
+t_node	*new_node(int num)
+{
+	t_node	*element;
+	int		*ptr;
+
+	element = malloc(sizeof(t_node));
+	if (!element)
+		return (NULL);
+	element->data = num;
+/* 	element->prev = NULL;
+	element->next = element->prev;// looping*/
+	return (element);
+}
+
+t_stack	fill_stack()
+{
+	
+}
+
+void	print_list(t_node *head)
+{
+	t_node	*curr;
+
+	if (!head)
+		return ;
+	curr = head;
+	printf("%d ", curr->data);
+	curr = curr->next;
+	while (curr != head)
+	{
+		printf("%d ", curr->data);
+		curr = curr->next;
+		printf("\n");
+	}
+	return ;
 }
 
 sa()
@@ -29,7 +67,7 @@ sb()
 	// Do nothing if there is only one element or none.
 }
 
-ss ()
+ss()
 {
 	// ss : sa and sb at the same time.
 }
@@ -103,12 +141,3 @@ The last element becomes the first one.
 rrb (reverse rotate b): Shift down all elements of stack b by 1.
 The last element becomes the first one.
 rrr : rra and rrb at the same time. */
-
-/* NORM
-• A structure’s name must start by s_.
-• A typedef’s name must start by t_.
-• A union’s name must start by u_.
-• An enum’s name must start by e_.
-• A global’s name must start by g_.
-• Identifiers, like variables, functions names, user defined types, can only contain
-lowercases, digits and ’_’ (snake_case). No capital letters are allowed.*/
