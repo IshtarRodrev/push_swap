@@ -36,9 +36,31 @@ t_node	*new_node(int num)
 	return (element);
 }
 
-t_stack	fill_stack()
+t_stack	fill_stack(t_node head, int new_data)
 {
-	
+    t_node new_node = new_node(new_data);
+    
+    if (!head) 
+    {
+        new_node->next = new_node->prev = new_node;
+        head = new_node;
+    }
+    else 
+    {
+        // List is not empty
+        t_node last = head->prev; 
+
+        // Insert new node
+        new_node->next = head;
+        new_node->prev = last;
+        head->prev = new_node;
+        last->next = new_node;
+        
+        // Update head
+        head = new_node;
+    }
+    
+    return head;
 }
 
 void	print_list(t_node *head)
