@@ -6,7 +6,7 @@
 /*   By: akechedz <akechedz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 20:23:33 by akechedz          #+#    #+#             */
-/*   Updated: 2025/12/19 18:51:40 by akechedz         ###   ########.fr       */
+/*   Updated: 2025/12/23 21:18:51 by akechedz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,22 @@
 	push_swap()
 {
 	//the magic;
+	//https://pythontutor.com/visualize.html#mode=edit
 }
 
 t_node	*new_node(int num)
 {
 	t_node	*element;
-	int		*ptr;
 
 	element = malloc(sizeof(t_node));
 	if (!element)
 		return (NULL);
 	element->data = num;
-/* 	element->prev = NULL;
+	element->next = NULL;
+	element->prev = NULL;
+/* 	
+	NOT hier!!!!
+	element->prev = NULL;
 	element->next = element->prev;// looping*/
 	return (element);
 }
@@ -44,14 +48,14 @@ void	print_list(t_node *head)
 	if (!head)
 		return ;
 	curr = head;
-	printf("%d ", curr->data);
-	curr = curr->next;
-	while (curr != head)
+	while (curr)
 	{
 		printf("%d ", curr->data);
 		curr = curr->next;
-		printf("\n");
+		if (curr == head)
+			break ;
 	}
+	printf("\n");
 	return ;
 }
 

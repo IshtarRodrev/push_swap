@@ -43,6 +43,13 @@ void	swap2(t_stack *src_stk)
 	src_stk->first = tmp;
 }
 
+void	swap3(t_stack *src_stk)
+{
+	t_node	*tmp_node;
+
+	tmp_node = new_node(src_stk->first->next);
+}
+
 	/* you can use a temporary pointer to store the second node, 
 	then adjust the pointers of the first node, 
 	and finally adjust the pointers of the second node */
