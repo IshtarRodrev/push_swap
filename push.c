@@ -12,7 +12,6 @@
 
 # include "push_swap.h"// TODO
 //https://www.geeksforgeeks.org/dsa/insertion-in-doubly-circular-linked-list/
-#include <stdio.h>//TODO: change to ft_printf
 
 void	push(t_stack *src_stk, t_stack *dst_stk)
 {
