@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akechedz <akechedz@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: akechedz <akechedz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 20:23:33 by akechedz          #+#    #+#             */
-/*   Updated: 2025/12/24 02:53:19 by akechedz         ###   ########.fr       */
+/*   Updated: 2025/12/24 18:36:22 by akechedz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-# include "push_swap.h"
+#include "push_swap.h"
 /*
 	push_swap()
 {
@@ -29,39 +29,36 @@ t_node	*new_node(int num)
 	element->data = num;
 	element->next = NULL;
 	element->prev = NULL;
-/* 	
-	NOT hier!!!!
-	element->prev = NULL;
-	element->next = element->prev;// looping*/
 	return (element);
 }
 
 t_stack	*fill_stack(t_stack *stack, int new_data)
 {
-    t_node *n_node;
-	
-	n_node = new_node(new_data);
-    if (!stack->first)
-    {
-        n_node->next = n_node->prev = NULL;
-        stack->first = n_node;
-    }
-    else 
-    {
-        // List is not empty
-        // t_node *last = head->prev; 
+	t_node	*element;
 
-        // Insert new node
-        n_node->next = stack->first;
-        n_node->prev = NULL;
-        stack->first = n_node;
-        stack->last->next = NULL;
-        
-        // Update head
-        stack->first = n_node;
-    }
-    
-    return stack;
+	element = new_node(new_data);
+	if (!stack->first)
+	{
+		element->next = NULL;
+		element->prev = NULL;
+		/*element->next = element->prev;// looping*/
+		stack->first = element;
+		stack->last = element;
+	}
+	else
+	{
+		// Insert new node
+		// List is not empty
+		// t_node *last = head->prev; 
+		element->next = stack->first;
+		element->next->prev = element;
+		element->prev = NULL;
+		stack->first = element;
+		// stack->last->next = NULL;
+		// Update head
+		stack->first = element;
+	}
+	return (stack);
 }
 
 void	print_list(t_node *head)
@@ -83,21 +80,31 @@ void	print_list(t_node *head)
 }
 
 int	main(int argc, char **argv)
-{	t_stack *a;
-	t_stack *b;
+{	
+	t_stack	*a;
+	t_stack	*b;
 	int		num;
-	
-	int i = argc;
-	printf(">>%d\n", argc);
-	while (argv[i])
+
+	a = malloc(sizeof(t_stack));
+	if (!a)
+		return (0);
+	b = malloc(sizeof(t_stack));
+	if (!b)
+		return (0);
+	while (argc > 1)
 	{
-		i--;
-			printf(">%s\n", argv[i]);
-		// num = atoi(argv[i]);
-		// a = fill_stack(a, num);
+		argc--;
+		// printf(">%s\n", argv[argc]);
+		num = atoi(argv[argc]);
+		printf(">%d\n", num);
+		fill_stack(a, num);
 	}
-	// b = NULL;
-	// print_list(a->first);
+	b->first = NULL;
+	print_list(a->first);
+	print_list(b->first);
+	pa(a, b);
+	print_list(a->first);
+	print_list(b->first);
 	return (1);
 }
 /*

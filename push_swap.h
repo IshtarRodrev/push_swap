@@ -29,6 +29,12 @@ typedef struct t_stack
 	struct t_node	*first;
 	struct t_node	*last;
 }					t_stack;
+
+void	pa(t_stack *b, t_stack *a);
+void	pb(t_stack *a, t_stack *b);
+void	sa(t_stack *a);
+void	sa(t_stack *b);
+void	ss(t_stack *b, t_stack *a);
 /*
 sa ()
 {
