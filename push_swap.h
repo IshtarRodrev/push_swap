@@ -14,6 +14,8 @@
 # define PUSH_SWAP_H
 
 # include <stdlib.h>
+# include <stdio.h>	//TODO: change to ft_printf
+# include <stdlib.h>//TODO: change to ft_atoi
 
 typedef struct t_node
 {
@@ -27,7 +29,7 @@ typedef struct t_stack
 	struct t_node	*first;
 	struct t_node	*last;
 }					t_stack;
-
+/*
 sa ()
 {
 	// sa (swap a): Swap the first 2 elements at the top of stack a.
@@ -86,7 +88,7 @@ rrr()
 {
 	// rrr : rra and rrb at the same time.
 }
-
+*/
 #endif
 /* 
 • You have 2 stacks named a and b.

@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akechedz <akechedz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akechedz <akechedz@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 20:23:33 by akechedz          #+#    #+#             */
-/*   Updated: 2025/12/23 21:18:51 by akechedz         ###   ########.fr       */
+/*   Updated: 2025/12/24 02:53:19 by akechedz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 # include "push_swap.h"
-
+/*
 	push_swap()
 {
 	//the magic;
 	//https://pythontutor.com/visualize.html#mode=edit
 }
-
+*/
 t_node	*new_node(int num)
 {
 	t_node	*element;
@@ -36,31 +36,32 @@ t_node	*new_node(int num)
 	return (element);
 }
 
-t_stack	fill_stack(t_node head, int new_data)
+t_stack	*fill_stack(t_stack *stack, int new_data)
 {
-    t_node new_node = new_node(new_data);
-    
-    if (!head) 
+    t_node *n_node;
+	
+	n_node = new_node(new_data);
+    if (!stack->first)
     {
-        new_node->next = new_node->prev = new_node;
-        head = new_node;
+        n_node->next = n_node->prev = NULL;
+        stack->first = n_node;
     }
     else 
     {
         // List is not empty
-        t_node last = head->prev; 
+        // t_node *last = head->prev; 
 
         // Insert new node
-        new_node->next = head;
-        new_node->prev = last;
-        head->prev = new_node;
-        last->next = new_node;
+        n_node->next = stack->first;
+        n_node->prev = NULL;
+        stack->first = n_node;
+        stack->last->next = NULL;
         
         // Update head
-        head = new_node;
+        stack->first = n_node;
     }
     
-    return head;
+    return stack;
 }
 
 void	print_list(t_node *head)
@@ -81,6 +82,25 @@ void	print_list(t_node *head)
 	return ;
 }
 
+int	main(int argc, char **argv)
+{	t_stack *a;
+	t_stack *b;
+	int		num;
+	
+	int i = argc;
+	printf(">>%d\n", argc);
+	while (argv[i])
+	{
+		i--;
+			printf(">%s\n", argv[i]);
+		// num = atoi(argv[i]);
+		// a = fill_stack(a, num);
+	}
+	// b = NULL;
+	// print_list(a->first);
+	return (1);
+}
+/*
 sa()
 {
 	// sa (swap a): Swap the first 2 elements at the top of stack a.
@@ -139,7 +159,7 @@ rrr()
 {
 	// rrr : rra and rrb at the same time.
 }
-
+*/
 /* 
 • You have 2 stacks named a and b.
 • At the beginning:

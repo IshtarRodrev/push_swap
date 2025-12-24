@@ -1,4 +1,6 @@
 *.a
 *.o
+*.out
+*.gch
 /misc/*
 main.*
