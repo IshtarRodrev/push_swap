@@ -6,7 +6,7 @@
 /*   By: akechedz <akechedz@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 20:23:33 by akechedz          #+#    #+#             */
-/*   Updated: 2025/12/25 12:14:20 by akechedz         ###   ########.fr       */
+/*   Updated: 2025/12/25 12:23:45 by akechedz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,9 @@ int validate(char *data)
 {
 	if (data != INT_MIN || data != INT_MAX)
 	{
-		return (1);
+		return (0);
 	}
-	return (0);
+	return (1);
 }
 
 void	print_list(t_node *head)
