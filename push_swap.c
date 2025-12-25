@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akechedz <akechedz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akechedz <akechedz@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 20:23:33 by akechedz          #+#    #+#             */
-/*   Updated: 2025/12/24 18:36:22 by akechedz         ###   ########.fr       */
+/*   Updated: 2025/12/25 12:14:20 by akechedz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,15 @@ t_stack	*fill_stack(t_stack *stack, int new_data)
 	return (stack);
 }
 
+int validate(char *data)
+{
+	if (data != INT_MIN || data != INT_MAX)
+	{
+		return (1);
+	}
+	return (0);
+}
+
 void	print_list(t_node *head)
 {
 	t_node	*curr;
@@ -101,7 +110,6 @@ int	main(int argc, char **argv)
 	}
 	b->first = NULL;
 	print_list(a->first);
-	print_list(b->first);
 	pa(a, b);
 	print_list(a->first);
 	print_list(b->first);
