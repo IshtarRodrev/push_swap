@@ -6,12 +6,12 @@
 /*   By: akechedz <akechedz@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 20:23:33 by akechedz          #+#    #+#             */
-/*   Updated: 2025/12/25 12:23:45 by akechedz         ###   ########.fr       */
+/*   Updated: 2026/01/06 02:09:24 by akechedz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "push_swap.h"
+#include <limits.h> //FIXME
 /*
 	push_swap()
 {
@@ -61,13 +61,34 @@ t_stack	*fill_stack(t_stack *stack, int new_data)
 	return (stack);
 }
 
-int validate(char *data)
+int	ft_atoi(const char *str)
 {
-	if (data != INT_MIN || data != INT_MAX)
+	int	neg;
+	int	result;
+
+	neg = 0;
+	result = 0;
+	while ((*str >= '\t' && *str <= '\r') || *str == ' ' )
 	{
-		return (0);
+		str++;
 	}
-	return (1);
+	if (*str == '+' || *str == '-')
+	{
+		if (*str == '-')
+			neg = 1;
+		str++;
+	}
+	while (*str >= '0' && *str <= '9')
+	{
+		result *= 10;
+		result += (*str - 48);
+		str++;
+	}
+	if (result > INT_MAX)
+		result = INT_MAX;
+	if (neg == 1)
+		result *= -1;
+	return (result);
 }
 
 void	print_list(t_node *head)
@@ -103,7 +124,6 @@ int	main(int argc, char **argv)
 	while (argc > 1)
 	{
 		argc--;
-		// printf(">%s\n", argv[argc]);
 		num = atoi(argv[argc]);
 		printf(">%d\n", num);
 		fill_stack(a, num);
@@ -111,6 +131,13 @@ int	main(int argc, char **argv)
 	b->first = NULL;
 	print_list(a->first);
 	pa(a, b);
+	pa(a, b);
+	print_list(a->first);
+	pa(a, b);
+	print_list(a->first);
+	ra(a);
+	print_list(a->first);
+	ra(a);
 	print_list(a->first);
 	print_list(b->first);
 	return (1);
