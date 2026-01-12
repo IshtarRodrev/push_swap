@@ -14,15 +14,26 @@
 
 void	rotate(t_stack *src_stk)	
 {
-	if(!src_stk->first || src_stk->first == src_stk->last)
+	t_node *tmp;
+
+	if(!src_stk || !src_stk->first || src_stk->first == src_stk->last)
 		return ;
+	/*
 	src_stk->first->prev = src_stk->last;
 	src_stk->last->next = src_stk->first;
 	src_stk->first = src_stk->first->next;
-	src_stk->last = src_stk->first->prev;
+	src_stk->last = src_stk->first->prev;//FIXME
 	src_stk->first->prev = NULL;
 	src_stk->last->next = NULL;
-	return ;
+	return ; 
+	*/
+	tmp = src_stk->first;
+	src_stk->first = src_stk->first->next;
+	src_stk->first->prev = NULL; 
+	tmp->next = NULL;
+	tmp->prev = src_stk->last;
+	src_stk->last->next = tmp; 
+	src_stk->last = tmp;
 }
 
 void	ra(t_stack *a)

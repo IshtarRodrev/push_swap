@@ -6,7 +6,7 @@
 /*   By: akechedz <akechedz@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 20:23:33 by akechedz          #+#    #+#             */
-/*   Updated: 2026/01/06 02:09:24 by akechedz         ###   ########.fr       */
+/*   Updated: 2026/01/09 20:13:22 by akechedz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,10 +115,10 @@ int	main(int argc, char **argv)
 	t_stack	*b;
 	int		num;
 
-	a = malloc(sizeof(t_stack));
+	a = calloc(1, sizeof(t_stack));
 	if (!a)
 		return (0);
-	b = malloc(sizeof(t_stack));
+	b = calloc(1, sizeof(t_stack));
 	if (!b)
 		return (0);
 	while (argc > 1)
@@ -137,7 +137,6 @@ int	main(int argc, char **argv)
 	print_list(a->first);
 	ra(a);
 	print_list(a->first);
-	ra(a);
 	print_list(a->first);
 	print_list(b->first);
 	return (1);

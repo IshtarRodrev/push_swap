@@ -30,14 +30,18 @@ typedef struct t_stack
 	struct t_node	*last;
 }					t_stack;
 
-void	sa(t_stack *a);
-void	sb(t_stack *b);
-void	ss(t_stack *b, t_stack *a);
-void	pa(t_stack *b, t_stack *a);
-void	pb(t_stack *a, t_stack *b);
-void	ra(t_stack *a);
-void	rb(t_stack *b);
-void	rr(t_stack *a, t_stack *b);
+void		*ft_calloc(size_t nmemb, size_t size);
+void		*ft_memset(void *b, int c, size_t len);
+static int	ft_isspace(int sym);
+int			ft_atoi(const char *str);
+void		sa(t_stack *a);
+void		sb(t_stack *b);
+void		ss(t_stack *b, t_stack *a);
+void		pa(t_stack *b, t_stack *a);
+void		pb(t_stack *a, t_stack *b);
+void		ra(t_stack *a);
+void		rb(t_stack *b);
+void		rr(t_stack *a, t_stack *b);
 /*
 sa ()
 {
