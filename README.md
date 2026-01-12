@@ -11,6 +11,8 @@ installation, and/or execution.
 • A “Resources” section listing classic references related to the topic (documen-
 tation, articles, tutorials, etc.), as well as a description of how AI was used —
 specifying for which tasks and which parts of the project.
+https://www.geeksforgeeks.org/dsa/insertion-in-doubly-circular-linked-list/
+https://pythontutor.com/visualize.html#mode=edit
 # Additional
 Additional sections may be required depending on the project (e.g., usage
 examples, feature list, technical choices, etc.).
