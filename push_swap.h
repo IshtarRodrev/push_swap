@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <stdio.h>	//TODO: change to ft_printf
 # include <stdlib.h>//TODO: change to ft_atoi
+# include "libft/libft.h"
 
 typedef struct t_node
 {
@@ -30,10 +31,6 @@ typedef struct t_stack
 	struct t_node	*last;
 }					t_stack;
 
-void		*ft_calloc(size_t nmemb, size_t size);
-void		*ft_memset(void *b, int c, size_t len);
-static int	ft_isspace(int sym);
-int			ft_atoi(const char *str);
 void		sa(t_stack *a);
 void		sb(t_stack *b);
 void		ss(t_stack *b, t_stack *a);
@@ -139,3 +136,16 @@ rrr : rra and rrb at the same time. */
 • A global’s name must start by g_.
 • Identifiers, like variables, functions names, user defined types, can only contain
 lowercases, digits and ’_’ (snake_case). No capital letters are allowed.*/
+
+/*
+For maximum project validation (100%) and eligibility for bonuses, you must:
+◦ Sort 100 random numbers in fewer than 700 operations.
+◦ Sort 500 random numbers in no more than 5500 operations.
+• For minimal project validation (which implies a minimum grade of 80%), you
+can succeed with different averages:
+◦ 100 numbers in under 1100 operations and 500 numbers in under
+8500 operations
+◦ 100 numbers in under 700 operations and 500 numbers in under
+11500 operations
+◦ 100 numbers in under 1300 operations and 500 numbers in under
+5500 operations*/

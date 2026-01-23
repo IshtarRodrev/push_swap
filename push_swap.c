@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akechedz <akechedz@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: akechedz <akechedz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 20:23:33 by akechedz          #+#    #+#             */
-/*   Updated: 2026/01/09 20:13:22 by akechedz         ###   ########.fr       */
+/*   Updated: 2026/01/14 06:28:43 by akechedz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
 #include <limits.h> //FIXME
+#include "push_swap.h"
 /*
 	push_swap()
 {
@@ -60,8 +60,7 @@ t_stack	*fill_stack(t_stack *stack, int new_data)
 	}
 	return (stack);
 }
-
-int	ft_atoi(const char *str)
+/*int	ft_atoi(const char *str)
 {
 	int	neg;
 	int	result;
@@ -89,7 +88,7 @@ int	ft_atoi(const char *str)
 	if (neg == 1)
 		result *= -1;
 	return (result);
-}
+} */
 
 void	print_list(t_node *head)
 {
@@ -115,16 +114,16 @@ int	main(int argc, char **argv)
 	t_stack	*b;
 	int		num;
 
-	a = calloc(1, sizeof(t_stack));
+	a = ft_calloc(1, sizeof(t_stack));
 	if (!a)
 		return (0);
-	b = calloc(1, sizeof(t_stack));
+	b = ft_calloc(1, sizeof(t_stack));
 	if (!b)
 		return (0);
 	while (argc > 1)
 	{
 		argc--;
-		num = atoi(argv[argc]);
+		num = ft_atoi(argv[argc]);
 		printf(">%d\n", num);
 		fill_stack(a, num);
 	}
@@ -141,7 +140,7 @@ int	main(int argc, char **argv)
 	print_list(b->first);
 	return (1);
 }
-/*
+/*>list of operations
 sa()
 {
 	// sa (swap a): Swap the first 2 elements at the top of stack a.
@@ -201,7 +200,7 @@ rrr()
 	// rrr : rra and rrb at the same time.
 }
 */
-/* 
+/* subject
 • You have 2 stacks named a and b.
 • At the beginning:
 ◦ The stack a contains a random number of unique negative and/or positive
