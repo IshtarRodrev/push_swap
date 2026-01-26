@@ -17,6 +17,7 @@
 # include <stdio.h>	//TODO: change to ft_printf
 # include <stdlib.h>//TODO: change to ft_atoi
 # include "libft/libft.h"
+# include "ft_printf/ft_printf.h"
 
 typedef struct t_node
 {
@@ -31,14 +32,22 @@ typedef struct t_stack
 	struct t_node	*last;
 }					t_stack;
 
-void		sa(t_stack *a);
-void		sb(t_stack *b);
-void		ss(t_stack *b, t_stack *a);
-void		pa(t_stack *b, t_stack *a);
-void		pb(t_stack *a, t_stack *b);
-void		ra(t_stack *a);
-void		rb(t_stack *b);
-void		rr(t_stack *a, t_stack *b);
+void	sa(t_stack *a);
+void	sb(t_stack *b);
+void	ss(t_stack *b, t_stack *a);
+void	pa(t_stack *b, t_stack *a);
+void	pb(t_stack *a, t_stack *b);
+void	ra(t_stack *a);
+void	rb(t_stack *b);
+void	rr(t_stack *a, t_stack *b);
+void	rra(t_stack *a);
+void	rrb(t_stack *b);
+void	rrr(t_stack *a, t_stack *b);
+
+int		check_stack(t_stack *stack, int new_data);
+int		check_digits(char *str);
+void	push_swap(t_stack *a, t_stack *b);
+void	print_list(t_node *head);
 /*
 sa ()
 {

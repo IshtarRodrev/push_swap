@@ -6,15 +6,14 @@
 /*   By: akechedz <akechedz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 20:23:33 by akechedz          #+#    #+#             */
-/*   Updated: 2026/01/26 18:53:02 by akechedz         ###   ########.fr       */
+/*   Updated: 2026/01/26 21:35:27 by akechedz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <limits.h> //FIXME
 /*
-	push_swap()
-{
+
 	//the magic;
 	//https://pythontutor.com/visualize.html#mode=edit
 }
@@ -30,6 +29,21 @@ t_node	*new_node(int num)
 	element->next = NULL;
 	element->prev = NULL;
 	return (element);
+}
+
+int	check_stack(t_stack *stack, int new_data)
+{
+	t_node	*tmp;
+
+	tmp = stack->last;
+	while (tmp->prev)
+	{
+		if (tmp->data == new_data)
+			return (0);
+		tmp = tmp->prev;
+	}
+	ft_printf("Error");
+	return (1);
 }
 
 t_stack	*fill_stack(t_stack *stack, int new_data)
@@ -58,21 +72,6 @@ t_stack	*fill_stack(t_stack *stack, int new_data)
 		stack->first = element;
 	}
 	return (stack);
-}
-
-int	check_stack(t_stack *stack, int new_data)
-{
-	t_node	*tmp;
-
-	tmp = stack->last;
-	while (tmp->prev)
-	{
-		if (tmp->data == new_data)
-			return (0);
-		tmp = tmp->prev;
-	}
-	ft_printf("Error");
-	return (1);
 }
 
 /* 
@@ -142,8 +141,7 @@ int	check_digits(char *checkme)
 	}
 	return (1);
 }
-
-int	main(int argc, char **argv)
+int	push_swap(int argc, char **argv)
 {	
 	t_stack	*a;
 	t_stack	*b;

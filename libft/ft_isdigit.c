@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akechedz <akechedz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/14 02:57:22 by akechedz          #+#    #+#             */
-/*   Updated: 2026/01/26 21:23:57 by akechedz         ###   ########.fr       */
+/*   Created: 2025/07/07 14:33:45 by akechedz          #+#    #+#             */
+/*   Updated: 2026/01/26 21:23:52 by akechedz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "libft.h"
 
-# include <stdlib.h>
-
-void	*ft_calloc(size_t nmemb, size_t size);
-void	*ft_memset(void *b, int c, size_t len);
-int		ft_atoi(const char *str);
-int		ft_isdigit(int c);
-
-#endif
+int	ft_isdigit(int c)
+{
+	if (c >= '0' && c <= '9')
+	{
+		return (1);
+	}
+	return (0);
+}

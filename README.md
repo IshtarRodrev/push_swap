@@ -16,9 +16,9 @@ Create main.c in the push_swap directory. The code is provided below.
 # include <stdio.h>
 # include "push_swap.h"
 
-int	main(void)
+int	main(void) // hardcoded values
 {
-	t_node	value = {123, NULL, NULL};
+	//t_node	value = {123, NULL, NULL};
 	t_node	*head = NULL;
 	t_node	*tmp = NULL;
 	t_stack	st;
@@ -37,6 +37,43 @@ int	main(void)
 	sa(&st);
 }
 	```
+	```C
+int	main(int argc, char **argv) // input values
+{
+	t_stack	*a;
+	t_stack	*b;
+	int		num;
+
+	a = calloc(1, sizeof(t_stack));
+	if (!a)
+		return (0);
+	b = calloc(1, sizeof(t_stack));
+	if (!b)
+		return (0);
+	while (argc > 1)
+	{
+		argc--;
+		if (!check_digits(argv[argc]))
+			return (ft_printf("Error"), 0);
+		num = ft_atoi(argv[argc]);
+		ft_printf(">%d\n", num);
+		fill_stack(a, num);
+	}
+	// b->first = NULL;
+	/* 	print_list(a->first);
+	pa(a, b);
+	pa(a, b);
+	print_list(a->first);
+	pa(a, b);
+	print_list(a->first);
+	ra(a);
+	print_list(a->first);
+	print_list(a->first);
+	print_list(b->first); */
+	push_swap(a, b);
+	return (1);
+}
+```
 # Resources
 • A “Resources” section listing classic references related to the topic (documen-
 tation, articles, tutorials, etc.), as well as a description of how AI was used —

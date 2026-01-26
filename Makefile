@@ -30,8 +30,14 @@ fclean: clean
 
 re: fclean all
 
-test: $(OBJ) main.o
-	$(CC) $^
+test: main.o $(OBJS) $(LIBFT_OBJS)
+	$(CC) $(CFLAGS) $^ -o test
+
+# test: main.o $(OBJS)
+# 	$(CC) $(CFLAGS) main.o $(OBJS) -o test
+
+# test: $(OBJ) main.o
+# 	$(CC) $^
 
 # test: $(OBJ) main.o
 # 	$(CC) $(OBJ) main.o -o test.out
