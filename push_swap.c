@@ -6,12 +6,12 @@
 /*   By: akechedz <akechedz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 20:23:33 by akechedz          #+#    #+#             */
-/*   Updated: 2026/01/14 06:28:43 by akechedz         ###   ########.fr       */
+/*   Updated: 2026/01/26 18:53:02 by akechedz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <limits.h> //FIXME
 #include "push_swap.h"
+#include <limits.h> //FIXME
 /*
 	push_swap()
 {
@@ -45,22 +45,38 @@ t_stack	*fill_stack(t_stack *stack, int new_data)
 		stack->first = element;
 		stack->last = element;
 	}
+	else if (!check_stack(stack, new_data))
+			return (stack);
 	else
 	{
-		// Insert new node
-		// List is not empty
 		// t_node *last = head->prev; 
 		element->next = stack->first;
 		element->next->prev = element;
 		element->prev = NULL;
 		stack->first = element;
 		// stack->last->next = NULL;
-		// Update head
 		stack->first = element;
 	}
 	return (stack);
 }
-/*int	ft_atoi(const char *str)
+
+int	check_stack(t_stack *stack, int new_data)
+{
+	t_node	*tmp;
+
+	tmp = stack->last;
+	while (tmp->prev)
+	{
+		if (tmp->data == new_data)
+			return (0);
+		tmp = tmp->prev;
+	}
+	ft_printf("Error");
+	return (1);
+}
+
+/* 
+int	ft_atoi(const char *str)
 {
 	int	neg;
 	int	result;
@@ -88,7 +104,8 @@ t_stack	*fill_stack(t_stack *stack, int new_data)
 	if (neg == 1)
 		result *= -1;
 	return (result);
-} */
+}
+*/
 
 void	print_list(t_node *head)
 {
@@ -99,13 +116,31 @@ void	print_list(t_node *head)
 	curr = head;
 	while (curr)
 	{
-		printf("%d ", curr->data);
+		ft_printf("%d ", curr->data);
 		curr = curr->next;
 		if (curr == head)
 			break ;
 	}
-	printf("\n");
+	ft_printf("\n");
 	return ;
+}
+
+int	check_digits(char *checkme)
+{
+	int	i;
+
+	i = 0;
+	if (checkme[i] == '-')
+		i++;
+	if (checkme[i] == '\0')
+		return (0);
+	while (checkme[i])
+	{
+		if (!ft_isdigit(checkme[i]))
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
 int	main(int argc, char **argv)
@@ -114,21 +149,23 @@ int	main(int argc, char **argv)
 	t_stack	*b;
 	int		num;
 
-	a = ft_calloc(1, sizeof(t_stack));
+	a = calloc(1, sizeof(t_stack));
 	if (!a)
 		return (0);
-	b = ft_calloc(1, sizeof(t_stack));
+	b = calloc(1, sizeof(t_stack));
 	if (!b)
 		return (0);
 	while (argc > 1)
 	{
 		argc--;
+		if (!check_digits(argv[argc]))
+			return (ft_printf("Error"), 0);
 		num = ft_atoi(argv[argc]);
-		printf(">%d\n", num);
+		ft_printf(">%d\n", num);
 		fill_stack(a, num);
 	}
-	b->first = NULL;
-	print_list(a->first);
+	// b->first = NULL;
+/* 	print_list(a->first);
 	pa(a, b);
 	pa(a, b);
 	print_list(a->first);
@@ -137,10 +174,11 @@ int	main(int argc, char **argv)
 	ra(a);
 	print_list(a->first);
 	print_list(a->first);
-	print_list(b->first);
+	print_list(b->first); */
+	push_swap(a, b);
 	return (1);
 }
-/*>list of operations
+/*
 sa()
 {
 	// sa (swap a): Swap the first 2 elements at the top of stack a.
@@ -200,7 +238,7 @@ rrr()
 	// rrr : rra and rrb at the same time.
 }
 */
-/* subject
+/*
 • You have 2 stacks named a and b.
 • At the beginning:
 ◦ The stack a contains a random number of unique negative and/or positive
