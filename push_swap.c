@@ -6,18 +6,27 @@
 /*   By: akechedz <akechedz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 20:23:33 by akechedz          #+#    #+#             */
-/*   Updated: 2026/01/26 21:35:27 by akechedz         ###   ########.fr       */
+/*   Updated: 2026/01/28 18:39:36 by akechedz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <limits.h> //FIXME
-/*
 
+/* void	push_swap()
+{
 	//the magic;
 	//https://pythontutor.com/visualize.html#mode=edit
+	//https://medium.com/@brakebein42/k-distribution-sort-applied-to-the-push-swap-problem-ae2d96d68376
+	//https://www.google.com/search?q=push+swap+ksort&sca_esv=a87a460474998c14&udm=50&fbs=ADc_l-YGrpJMQtvjQ6h14rj-dfIrH4mwN5r0Z1FZtFNB2w3Upe2HDPC6akWpYUJBWeXXRd1nD-EOaE0XinGd5KvoJHG8OW6hbPG5HGkmH5eSOG4TMBnyznkwl4rk7eTLPmGiiMXA5VY9M9TuEf30xK4inDhkSZpsG7LKn-gYXluNSgL4chfqr1ROt-6fxN4aMa1bK4-MNo7i&aep=1&ntc=1&sa=X&ved=2ahUKEwjQoqPq3K6SAxXK5QIHHWcdEVUQ2J8OegQICRAD&biw=2663&bih=1297&dpr=1&aic=0&mstk=AUtExfDtognJwVWGkKvQQlQCGVZoGPYfdpx7o5VD0dJh4EdPIt1tGMJZQrxkicIJ5BM7no-Xu_YlcPMl9ruPdBgbKde30pYb2dzfj8IVLqqKvbmGhz26ohjHq6Ylz3TiOh9m0x_BnIBAIg8l-kaymlE3mYP5SbeJzJQsS5c&csuir=1
+} */
+void	k_sort(t_stack a, t_stack b)
+{
+	/* 
+	echo "pb\npb\npb\nrrb\npa\nrrb\npa\npa" | ./checker_linux 3 2 1 
+	*/
 }
-*/
+
 t_node	*new_node(int num)
 {
 	t_node	*element;
@@ -141,7 +150,8 @@ int	check_digits(char *checkme)
 	}
 	return (1);
 }
-int	push_swap(int argc, char **argv)
+
+int	main(int argc, char **argv)
 {	
 	t_stack	*a;
 	t_stack	*b;
@@ -149,10 +159,10 @@ int	push_swap(int argc, char **argv)
 
 	a = calloc(1, sizeof(t_stack));
 	if (!a)
-		return (0);
+		return (1);
 	b = calloc(1, sizeof(t_stack));
 	if (!b)
-		return (0);
+		return (1);
 	while (argc > 1)
 	{
 		argc--;
@@ -173,8 +183,8 @@ int	push_swap(int argc, char **argv)
 	print_list(a->first);
 	print_list(a->first);
 	print_list(b->first); */
-	push_swap(a, b);
-	return (1);
+	push_swap(a, b);//TODO: rename this func to k_sort
+	return (0);
 }
 /*
 sa()
@@ -263,3 +273,4 @@ The last element becomes the first one.
 rrb (reverse rotate b): Shift down all elements of stack b by 1.
 The last element becomes the first one.
 rrr : rra and rrb at the same time. */
+// TODO: NORMALISE DATA!!!
