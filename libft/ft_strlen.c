@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akechedz <akechedz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/14 18:52:41 by akechedz          #+#    #+#             */
-/*   Updated: 2025/07/15 14:30:25 by akechedz         ###   ########.fr       */
+/*   Created: 2025/07/07 13:53:02 by akechedz          #+#    #+#             */
+/*   Updated: 2025/07/16 19:59:33 by akechedz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memset(void *b, int c, size_t len)
+size_t	ft_strlen(const char *str)
 {
-	unsigned char	*value;
+	size_t	i;
 
-	value = ((unsigned char *)b);
-	while (len > 0)
+	i = 0;
+	while (str[i])
 	{
-		*value = (unsigned char)c;
-		value++;
-		len--;
+		i++;
 	}
-	return (b);
+	return (i);
 }
-/* returns void of undefind type
-fills the string with same single byte c 
-*/

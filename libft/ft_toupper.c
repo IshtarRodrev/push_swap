@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akechedz <akechedz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/14 18:52:41 by akechedz          #+#    #+#             */
-/*   Updated: 2025/07/15 14:30:25 by akechedz         ###   ########.fr       */
+/*   Created: 2025/07/07 14:03:18 by akechedz          #+#    #+#             */
+/*   Updated: 2025/07/09 20:22:13 by akechedz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memset(void *b, int c, size_t len)
+int	ft_toupper(int c)
 {
-	unsigned char	*value;
-
-	value = ((unsigned char *)b);
-	while (len > 0)
+	if (c >= 'a' && c <= 'z')
 	{
-		*value = (unsigned char)c;
-		value++;
-		len--;
+		c -= 32;
 	}
-	return (b);
+	return (c);
 }
-/* returns void of undefind type
-fills the string with same single byte c 
-*/

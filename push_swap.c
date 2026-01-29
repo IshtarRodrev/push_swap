@@ -6,7 +6,7 @@
 /*   By: akechedz <akechedz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 20:23:33 by akechedz          #+#    #+#             */
-/*   Updated: 2026/01/28 18:39:36 by akechedz         ###   ########.fr       */
+/*   Updated: 2026/01/29 19:21:02 by akechedz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,32 @@
 	//https://medium.com/@brakebein42/k-distribution-sort-applied-to-the-push-swap-problem-ae2d96d68376
 	//https://www.google.com/search?q=push+swap+ksort&sca_esv=a87a460474998c14&udm=50&fbs=ADc_l-YGrpJMQtvjQ6h14rj-dfIrH4mwN5r0Z1FZtFNB2w3Upe2HDPC6akWpYUJBWeXXRd1nD-EOaE0XinGd5KvoJHG8OW6hbPG5HGkmH5eSOG4TMBnyznkwl4rk7eTLPmGiiMXA5VY9M9TuEf30xK4inDhkSZpsG7LKn-gYXluNSgL4chfqr1ROt-6fxN4aMa1bK4-MNo7i&aep=1&ntc=1&sa=X&ved=2ahUKEwjQoqPq3K6SAxXK5QIHHWcdEVUQ2J8OegQICRAD&biw=2663&bih=1297&dpr=1&aic=0&mstk=AUtExfDtognJwVWGkKvQQlQCGVZoGPYfdpx7o5VD0dJh4EdPIt1tGMJZQrxkicIJ5BM7no-Xu_YlcPMl9ruPdBgbKde30pYb2dzfj8IVLqqKvbmGhz26ohjHq6Ylz3TiOh9m0x_BnIBAIg8l-kaymlE3mYP5SbeJzJQsS5c&csuir=1
 } */
-void	k_sort(t_stack a, t_stack b)
+void	k_sort(t_stack *a, t_stack *b) //FIXME: this is pseudocode
 {
+	int	n;
+	int	delta;
+	int	threshold;
+
+	n = a->size;
+	delta = n / 20 + 7;
+	threshold = 0;
+	while (!is_empty(a))
+	{
+		if (a->first->index <= threshold + delta)
+		{
+			pb(a, b);
+			if (b->top->index <= threshold)
+				rb(b);
+			threshold++;
+		}
+		else
+		{
+			ra(a);
+		}
+	}
 	/* 
 	echo "pb\npb\npb\nrrb\npa\nrrb\npa\npa" | ./checker_linux 3 2 1 
+	echo "pb\npb\npb\nrrb\npa\nrrb\npa\npa" | ./misc/checker_linux 3 2 1
 	*/
 }
 
@@ -69,7 +91,7 @@ t_stack	*fill_stack(t_stack *stack, int new_data)
 		stack->last = element;
 	}
 	else if (!check_stack(stack, new_data))
-			return (stack);
+		return (stack);
 	else
 	{
 		// t_node *last = head->prev; 

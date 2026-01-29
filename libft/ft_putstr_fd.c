@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akechedz <akechedz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/14 18:52:41 by akechedz          #+#    #+#             */
-/*   Updated: 2025/07/15 14:30:25 by akechedz         ###   ########.fr       */
+/*   Created: 2025/08/10 19:29:24 by akechedz          #+#    #+#             */
+/*   Updated: 2025/08/10 20:09:31 by akechedz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
 #include "libft.h"
 
-void	*ft_memset(void *b, int c, size_t len)
+void	ft_putstr_fd(char *s, int fd)
 {
-	unsigned char	*value;
+	size_t	len;
 
-	value = ((unsigned char *)b);
-	while (len > 0)
-	{
-		*value = (unsigned char)c;
-		value++;
-		len--;
-	}
-	return (b);
+	if (s == NULL || fd < 0)
+		return ;
+	len = ft_strlen(s);
+	write(fd, s, len);
+	return ;
 }
-/* returns void of undefind type
-fills the string with same single byte c 
-*/
+/*	Outputs the string ’s’ to the specified file descriptor.*/

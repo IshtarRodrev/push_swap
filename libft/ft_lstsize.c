@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akechedz <akechedz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/14 18:52:41 by akechedz          #+#    #+#             */
-/*   Updated: 2025/07/15 14:30:25 by akechedz         ###   ########.fr       */
+/*   Created: 2025/09/04 18:05:08 by akechedz          #+#    #+#             */
+/*   Updated: 2025/10/09 14:23:42 by akechedz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memset(void *b, int c, size_t len)
+int	ft_lstsize(t_list *lst)
 {
-	unsigned char	*value;
+	int		count;
+	t_list	*element;
 
-	value = ((unsigned char *)b);
-	while (len > 0)
+	while (lst)
 	{
-		*value = (unsigned char)c;
-		value++;
-		len--;
+		element->next;
+		count++;
 	}
-	return (b);
+	return (count);
 }
-/* returns void of undefind type
-fills the string with same single byte c 
-*/
+/*	Counts the number of nodes in the list.*/
+/*	Returns the length of the list.*/

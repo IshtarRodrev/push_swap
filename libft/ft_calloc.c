@@ -6,11 +6,12 @@
 /*   By: akechedz <akechedz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 15:58:06 by akechedz          #+#    #+#             */
-/*   Updated: 2025/08/02 17:21:14 by akechedz         ###   ########.fr       */
+/*   Updated: 2025/08/14 19:47:16 by akechedz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {

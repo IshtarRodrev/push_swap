@@ -1,50 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                         :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akechedz <akechedz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/04 13:52:26 by akechedz          #+#    #+#             */
-/*   Updated: 2025/07/06 20:12:14 by akechedz         ###   ########.fr       */
+/*   Created: 2025/07/07 18:33:04 by akechedz          #+#    #+#             */
+/*   Updated: 2025/08/14 15:30:00 by akechedz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_isspace(int sym)
+char	*ft_strchr(const char *str, int c)
 {
-	if ((sym >= '\t' && sym <= '\r') || sym == ' ' )
+	while (*str)
 	{
-		return (sym);
+		if (*str == (char)c)
+		{
+			return ((char *)str);
+		}
+		str++;
 	}
-	return (0);
+	if ((char)c == '\0')
+	{
+		return ((char *)str);
+	}
+	return (NULL);
 }
-
-int	ft_atoi(const char *str)
-{
-	int	neg;
-	int	result;
-
-	neg = 0;
-	result = 0;
-	while (ft_isspace(*str))
-	{
-		str++;
-	}
-	if (*str == '+' || *str == '-')
-	{
-		if (*str == '-')
-			neg = 1;
-		str++;
-	}
-	while (*str >= '0' && *str <= '9')
-	{
-		result *= 10;
-		result += (*str - 48);
-		str++;
-	}
-	if (neg == 1)
-		result *= -1;
-	return (result);
-}
+/*	The strchr() function locates the first occurrence of c (converted to a
+	char) in the string pointed to by s.  The terminating null character is
+	considered to be part of the string; therefore if c is `\0', the func-
+	tions locate the terminating `\0'.*/ 

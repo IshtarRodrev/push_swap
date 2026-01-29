@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akechedz <akechedz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/14 18:52:41 by akechedz          #+#    #+#             */
-/*   Updated: 2025/07/15 14:30:25 by akechedz         ###   ########.fr       */
+/*   Created: 2025/08/10 20:11:29 by akechedz          #+#    #+#             */
+/*   Updated: 2025/08/10 20:20:06 by akechedz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
 #include "libft.h"
 
-void	*ft_memset(void *b, int c, size_t len)
+void	ft_putendl_fd(char *s, int fd)
 {
-	unsigned char	*value;
-
-	value = ((unsigned char *)b);
-	while (len > 0)
-	{
-		*value = (unsigned char)c;
-		value++;
-		len--;
-	}
-	return (b);
+	if (s == NULL || fd < 0)
+		return ;
+	ft_putstr_fd(s, fd);
+	ft_putchar_fd('\n', fd);
 }
-/* returns void of undefind type
-fills the string with same single byte c 
-*/
+/*	Outputs the string ’s’ to the specified file descriptor followed by a 
+	newline.*/

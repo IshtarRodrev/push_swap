@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akechedz <akechedz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/14 18:52:41 by akechedz          #+#    #+#             */
-/*   Updated: 2025/07/15 14:30:25 by akechedz         ###   ########.fr       */
+/*   Created: 2025/07/07 14:16:41 by akechedz          #+#    #+#             */
+/*   Updated: 2025/07/09 16:22:12 by akechedz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memset(void *b, int c, size_t len)
+int	ft_isprint(int c)
 {
-	unsigned char	*value;
-
-	value = ((unsigned char *)b);
-	while (len > 0)
+	if (c >= 32 && c < 127)
 	{
-		*value = (unsigned char)c;
-		value++;
-		len--;
+		return (1);
 	}
-	return (b);
+	return (0);
 }
-/* returns void of undefind type
-fills the string with same single byte c 
-*/

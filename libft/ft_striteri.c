@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akechedz <akechedz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/14 18:52:41 by akechedz          #+#    #+#             */
-/*   Updated: 2025/07/15 14:30:25 by akechedz         ###   ########.fr       */
+/*   Created: 2025/08/10 18:16:45 by akechedz          #+#    #+#             */
+/*   Updated: 2025/08/10 18:55:50 by akechedz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memset(void *b, int c, size_t len)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	unsigned char	*value;
+	size_t	len;
 
-	value = ((unsigned char *)b);
-	while (len > 0)
+	if (s == NULL)
+		return ;
+	len = ft_strlen(s);
+	while (len-- > 0)
 	{
-		*value = (unsigned char)c;
-		value++;
-		len--;
+		f(len, &s[len]);
 	}
-	return (b);
+	return ;
 }
-/* returns void of undefind type
-fills the string with same single byte c 
-*/
+
+/*	Applies the function ’f’ to each character of the string passed as argument,
+	passing its index as the first argument. Each character is passed by address
+	to ’f’ so it can be modified if necessary.*/
+/*	Return value: none*/

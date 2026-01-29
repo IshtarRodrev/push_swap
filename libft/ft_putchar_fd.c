@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akechedz <akechedz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/14 18:52:41 by akechedz          #+#    #+#             */
-/*   Updated: 2025/07/15 14:30:25 by akechedz         ###   ########.fr       */
+/*   Created: 2025/08/10 18:58:52 by akechedz          #+#    #+#             */
+/*   Updated: 2025/08/10 19:26:18 by akechedz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
 #include "libft.h"
 
-void	*ft_memset(void *b, int c, size_t len)
+void	ft_putchar_fd(char c, int fd)
 {
-	unsigned char	*value;
-
-	value = ((unsigned char *)b);
-	while (len > 0)
-	{
-		*value = (unsigned char)c;
-		value++;
-		len--;
-	}
-	return (b);
+	if (fd < 0)
+		return ;
+	write(fd, &c, 1);
+	return ;
 }
-/* returns void of undefind type
-fills the string with same single byte c 
-*/
+/*	Outputs the character ’c’ to the specified file descriptor.*/
+/*	Return value: none.*/
+/*	In Unix type systems, a file descriptor (fd for short) is a small positive 
+	integer used as reference to an open file in a process. */
