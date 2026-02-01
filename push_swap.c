@@ -6,7 +6,7 @@
 /*   By: akechedz <akechedz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 20:23:33 by akechedz          #+#    #+#             */
-/*   Updated: 2026/01/29 19:21:02 by akechedz         ###   ########.fr       */
+/*   Updated: 2026/01/30 20:11:46 by akechedz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ void	k_sort(t_stack *a, t_stack *b) //FIXME: this is pseudocode
 	n = a->size;
 	delta = n / 20 + 7;
 	threshold = 0;
-	while (!is_empty(a))
+	while (!a->first && !a->last)
 	{
-		if (a->first->index <= threshold + delta)
+		if (a->first->data <= threshold + delta)
 		{
 			pb(a, b);
-			if (b->top->index <= threshold)
+			if (b->first->data <= threshold)
 				rb(b);
 			threshold++;
 		}
@@ -43,7 +43,7 @@ void	k_sort(t_stack *a, t_stack *b) //FIXME: this is pseudocode
 			ra(a);
 		}
 	}
-	/* 
+	/*
 	echo "pb\npb\npb\nrrb\npa\nrrb\npa\npa" | ./checker_linux 3 2 1 
 	echo "pb\npb\npb\nrrb\npa\nrrb\npa\npa" | ./misc/checker_linux 3 2 1
 	*/
@@ -173,7 +173,7 @@ int	check_digits(char *checkme)
 	return (1);
 }
 
-int	main(int argc, char **argv)
+int	main(int argc, char **argv)//TODO: rename this func to push_swap
 {	
 	t_stack	*a;
 	t_stack	*b;
@@ -185,6 +185,7 @@ int	main(int argc, char **argv)
 	b = calloc(1, sizeof(t_stack));
 	if (!b)
 		return (1);
+	a->size = argc;
 	while (argc > 1)
 	{
 		argc--;
@@ -205,7 +206,7 @@ int	main(int argc, char **argv)
 	print_list(a->first);
 	print_list(a->first);
 	print_list(b->first); */
-	push_swap(a, b);//TODO: rename this func to k_sort
+	k_sort(a, b);
 	return (0);
 }
 /*

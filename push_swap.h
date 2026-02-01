@@ -17,7 +17,7 @@
 # include <stdio.h>	//TODO: change to ft_printf
 # include <stdlib.h>//TODO: change to ft_atoi
 # include "libft/libft.h"
-# include "ft_printf/ft_printf.h"
+# include "libft/ft_printf.h"
 
 typedef struct t_node
 {
@@ -30,6 +30,7 @@ typedef struct t_stack
 {
 	struct t_node	*first;
 	struct t_node	*last;
+	size_t			size;
 }					t_stack;
 
 void	sa(t_stack *a);

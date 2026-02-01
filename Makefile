@@ -10,17 +10,23 @@ SRCS = push_swap.c \
 
 OBJS = $(SRCS:.c=.o)
 
-LIBFT_SRCS = libft/ft_calloc.c \
-	libft/ft_memset.c \
-	libft/ft_atoi.c
-LIBFT_OBJS = $(LIBFT_SRCS:.c=.o)
+LIBFT_FOLDER = libft
+LIBFT_LIB = $(LIBFT_FOLDER)/libft.a 
 
-NAME = push_swap.a
+NAME = push_swap
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(LIBFT_OBJS)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT_OBJS) -o $(NAME)
+# libtmp.a
+# -ltmp -> lib tmp .a
+
+# -lft -> libft.a
+$(NAME): $(OBJS) $(LIBFT_LIB)
+	$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT_FOLDER) -lft  -o $(@)
+
+linft/libft.a
+$(LIBFT_LIB) :
+	make -C $(LIBFT_FOLDER)
 
 clean:
 	rm -f $(OBJS) $(LIBFT_OBJS)
@@ -32,6 +38,8 @@ re: fclean all
 
 test: main.o $(OBJS) $(LIBFT_OBJS)
 	$(CC) $(CFLAGS) $^ -o test
+
+%.o: %.c
 
 # test: main.o $(OBJS)
 # 	$(CC) $(CFLAGS) main.o $(OBJS) -o test
