@@ -13,11 +13,7 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include <stdlib.h>
-# include <stdio.h>	//TODO: change to ft_printf
-# include <stdlib.h>//TODO: change to ft_atoi
-# include "libft/libft.h"
-# include "libft/ft_printf.h"
+# include <stddef.h>
 
 typedef struct t_node
 {
@@ -48,6 +44,7 @@ void	rrr(t_stack *a, t_stack *b);
 int		check_stack(t_stack *stack, int new_data);
 int		check_digits(char *str);
 void	push_swap(t_stack *a, t_stack *b);
+void	k_sort(t_stack *a, t_stack *b);
 void	print_list(t_node *head);
 /*
 sa ()

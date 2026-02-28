@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: akechedz <akechedz@student.42.fr>          +#+  +:+       +#+         #
+#    By: akechedz <akechedz@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/13 17:43:40 by akechedz          #+#    #+#              #
-#    Updated: 2026/01/29 20:20:47 by akechedz         ###   ########.fr        #
+#    Updated: 2026/02/28 19:43:07 by akechedz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,11 +60,11 @@ SRC = ft_isalpha.c \
 	ft_putendl_fd.c \
 	ft_strmapi.c \
 	ft_putnbr_fd.c \
-	ft_printf.c \
-	ft_puthex_unsigned.c \
-	ft_putnbr_unsigned.c \
-	ft_putnbr.c \
-	ft_putptr_ul.c
+	ft_printf/ft_printf.c \
+	ft_printf/ft_puthex_unsigned.c \
+	ft_printf/ft_putnbr_unsigned.c \
+	ft_printf/ft_putnbr.c \
+	ft_printf/ft_putptr_ul.c
 
 HEADER = libft.h
 
@@ -79,7 +79,7 @@ $(NAME): $(OBJ)
 	ar rc $(NAME) $(OBJ)
 
 %.o: %.c
-	$(CC) $(CCFLAGS) -c $< -o $@
+	$(CC) $(CCFLAGS) -I. -c $< -o $@
 
 clean:
 	rm -f $(OBJ) $(BONUS_OBJ)

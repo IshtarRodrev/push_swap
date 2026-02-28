@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "libft/ft_printf/ft_printf.h"
 
 void	rotate(t_stack *src_stk)	
 {
@@ -34,6 +35,8 @@ void	rotate(t_stack *src_stk)
 	tmp->prev = src_stk->last;
 	src_stk->last->next = tmp; 
 	src_stk->last = tmp;
+
+
 }
 
 void	ra(t_stack *a)
@@ -41,19 +44,19 @@ void	ra(t_stack *a)
 	// ra (rotate a): Shift up all elements of stack a by 1.
 	// The first element becomes the last one.
 	rotate(a);
-	printf("ra\n");
+	ft_printf("ra\n");
 }
 void	rb(t_stack *b)
 {
 	// rb (rotate b): Shift up all elements of stack b by 1.
 	// The first element becomes the last one.
 	rotate(b);
-	printf("rb\n");
+	ft_printf("rb\n");
 }
 void	rr(t_stack *a, t_stack *b)
 {
 	// rr : ra and rb at the same time.
 	rotate(a);
 	rotate(b);
-	printf("rr\n");
+	ft_printf("rr\n");
 }

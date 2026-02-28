@@ -80,6 +80,7 @@ specifying for which tasks and which parts of the project.
 https://www.geeksforgeeks.org/dsa/insertion-in-doubly-circular-linked-list/
 https://pythontutor.com/visualize.html#mode=edit
 https://push-swap42-visualizer.vercel.app/
+https://medium.com/@brakebein42/k-distribution-sort-applied-to-the-push-swap-problem-ae2d96d68376
 # Additional
 Additional sections may be required depending on the project (e.g., usage
 examples, feature list, technical choices, etc.).

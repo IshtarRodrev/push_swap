@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "push_swap.h"// TODO
+# include "push_swap.h"
+# include "libft/ft_printf/ft_printf.h"
 //https://www.geeksforgeeks.org/dsa/insertion-in-doubly-circular-linked-list/
 
 void	push(t_stack *src_stk, t_stack *dst_stk)
@@ -36,13 +37,13 @@ void	pa(t_stack *b, t_stack *a)
 	// pa (push a): Take the first element at the top of b and put it at the top of a.
 	// Do nothing if b is empty.
 	push(b, a);
-	printf("pa\n");//TODO: change to ft_printf
+	ft_printf("pa\n");
 }
 
-void	pb(t_stack *b, t_stack *a)
+void	pb(t_stack *a, t_stack *b)
 {
 	// pb (push b): Take the first element at the top of a and put it at the top of b.
 	// Do nothing if a is empty.
 	push(a, b);
-	printf("pb\n");//TODO: change to ft_printf
+	ft_printf("pb\n");
 }

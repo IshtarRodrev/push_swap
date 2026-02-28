@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 # include "push_swap.h"
+# include "libft/ft_printf/ft_printf.h"
 
 void	reverse_rotate(t_stack *s)
 {
@@ -31,7 +32,7 @@ void	rra(t_stack *a)
 	// rra (reverse rotate a): Shift down all elements of stack a by 1.
 	// The last element becomes the first one.
 	reverse_rotate(a);
-	printf("rra\n");
+	ft_printf("rra\n");
 }
 
 void	rrb(t_stack *b)
@@ -39,7 +40,7 @@ void	rrb(t_stack *b)
 	// rrb (reverse rotate b): Shift down all elements of stack b by 1.
 	// The last element becomes the first one.
 	reverse_rotate(b);
-	printf("rrb\n");
+	ft_printf("rrb\n");
 }
 
 void	rrr(t_stack *a, t_stack *b)
@@ -47,5 +48,5 @@ void	rrr(t_stack *a, t_stack *b)
 	// rrr : rra and rrb at the same time.
 	reverse_rotate(a);
 	reverse_rotate(b);
-	printf("rrr\n");
+	ft_printf("rrr\n");
 }

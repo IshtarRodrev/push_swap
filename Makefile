@@ -3,10 +3,10 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
 SRCS = push_swap.c \
-	push.c \
-	swap.c \
-	rotate.c \
-	reverse_rotate.c
+	stk_ops/push.c \
+	stk_ops/swap.c \
+	stk_ops/rotate.c \
+	stk_ops/reverse_rotate.c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -22,24 +22,24 @@ all: $(NAME)
 
 # -lft -> libft.a
 $(NAME): $(OBJS) $(LIBFT_LIB)
-	$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT_FOLDER) -lft  -o $(@)
+	$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT_FOLDER) -lft -I. -o $(@)
 
-linft/libft.a
 $(LIBFT_LIB) :
 	make -C $(LIBFT_FOLDER)
 
 clean:
-	rm -f $(OBJS) $(LIBFT_OBJS)
+	rm -f $(OBJS)
 
 fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
 
-test: main.o $(OBJS) $(LIBFT_OBJS)
+test: main.o $(OBJS)
 	$(CC) $(CFLAGS) $^ -o test
 
 %.o: %.c
+	$(CC) $(CFLAGS) -I. -I$(LIBFT_FOLDER) -c $< -o $@
 
 # test: main.o $(OBJS)
 # 	$(CC) $(CFLAGS) main.o $(OBJS) -o test

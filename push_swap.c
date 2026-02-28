@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akechedz <akechedz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akechedz <akechedz@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 20:23:33 by akechedz          #+#    #+#             */
-/*   Updated: 2026/01/30 20:11:46 by akechedz         ###   ########.fr       */
+/*   Updated: 2026/02/28 16:37:33 by akechedz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <limits.h> //FIXME
+#include <limits.h> //FIXME: remove if INT_MAX unused
+#include <stdlib.h>
+#include "libft/libft.h"
+#include "libft/ft_printf/ft_printf.h"
 
 /* void	push_swap()
 {
@@ -20,34 +23,6 @@
 	//https://medium.com/@brakebein42/k-distribution-sort-applied-to-the-push-swap-problem-ae2d96d68376
 	//https://www.google.com/search?q=push+swap+ksort&sca_esv=a87a460474998c14&udm=50&fbs=ADc_l-YGrpJMQtvjQ6h14rj-dfIrH4mwN5r0Z1FZtFNB2w3Upe2HDPC6akWpYUJBWeXXRd1nD-EOaE0XinGd5KvoJHG8OW6hbPG5HGkmH5eSOG4TMBnyznkwl4rk7eTLPmGiiMXA5VY9M9TuEf30xK4inDhkSZpsG7LKn-gYXluNSgL4chfqr1ROt-6fxN4aMa1bK4-MNo7i&aep=1&ntc=1&sa=X&ved=2ahUKEwjQoqPq3K6SAxXK5QIHHWcdEVUQ2J8OegQICRAD&biw=2663&bih=1297&dpr=1&aic=0&mstk=AUtExfDtognJwVWGkKvQQlQCGVZoGPYfdpx7o5VD0dJh4EdPIt1tGMJZQrxkicIJ5BM7no-Xu_YlcPMl9ruPdBgbKde30pYb2dzfj8IVLqqKvbmGhz26ohjHq6Ylz3TiOh9m0x_BnIBAIg8l-kaymlE3mYP5SbeJzJQsS5c&csuir=1
 } */
-void	k_sort(t_stack *a, t_stack *b) //FIXME: this is pseudocode
-{
-	int	n;
-	int	delta;
-	int	threshold;
-
-	n = a->size;
-	delta = n / 20 + 7;
-	threshold = 0;
-	while (!a->first && !a->last)
-	{
-		if (a->first->data <= threshold + delta)
-		{
-			pb(a, b);
-			if (b->first->data <= threshold)
-				rb(b);
-			threshold++;
-		}
-		else
-		{
-			ra(a);
-		}
-	}
-	/*
-	echo "pb\npb\npb\nrrb\npa\nrrb\npa\npa" | ./checker_linux 3 2 1 
-	echo "pb\npb\npb\nrrb\npa\nrrb\npa\npa" | ./misc/checker_linux 3 2 1
-	*/
-}
 
 t_node	*new_node(int num)
 {
@@ -62,10 +37,13 @@ t_node	*new_node(int num)
 	return (element);
 }
 
+//TODO: rename to check_dublicates
 int	check_stack(t_stack *stack, int new_data)
 {
 	t_node	*tmp;
 
+	if (!stack || !stack->first)
+		return (1);
 	tmp = stack->last;
 	while (tmp->prev)
 	{
@@ -73,6 +51,7 @@ int	check_stack(t_stack *stack, int new_data)
 			return (0);
 		tmp = tmp->prev;
 	}
+	//TODO: Printing error message outside of this function
 	ft_printf("Error");
 	return (1);
 }
@@ -90,6 +69,8 @@ t_stack	*fill_stack(t_stack *stack, int new_data)
 		stack->first = element;
 		stack->last = element;
 	}
+	//TODO: Wrong plase!!!
+	//TODO: Move checking outside this function
 	else if (!check_stack(stack, new_data))
 		return (stack);
 	else
@@ -148,8 +129,8 @@ void	print_list(t_node *head)
 	{
 		ft_printf("%d ", curr->data);
 		curr = curr->next;
-		if (curr == head)
-			break ;
+		// if (curr == head)
+		// 	break ;
 	}
 	ft_printf("\n");
 	return ;
@@ -185,6 +166,8 @@ int	main(int argc, char **argv)//TODO: rename this func to push_swap
 	b = calloc(1, sizeof(t_stack));
 	if (!b)
 		return (1);
+
+	//TODO: wrong!!!
 	a->size = argc;
 	while (argc > 1)
 	{
@@ -192,7 +175,9 @@ int	main(int argc, char **argv)//TODO: rename this func to push_swap
 		if (!check_digits(argv[argc]))
 			return (ft_printf("Error"), 0);
 		num = ft_atoi(argv[argc]);
+		//TODO: if (check_dublicates)
 		ft_printf(">%d\n", num);
+		//TODO: add_to_stack
 		fill_stack(a, num);
 	}
 	// b->first = NULL;

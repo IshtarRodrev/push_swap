@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"// TODO
+#include "push_swap.h"
+#include "libft/ft_printf/ft_printf.h"
 
 void	swap(t_stack *src_stk)
 {
@@ -59,7 +60,7 @@ void	sa(t_stack *a)
 	// sa (swap a): Swap the first 2 elements at the top of stack a.
 	// Do nothing if there is only one element or none.
 	swap(a);
-	printf("sa\n");
+	ft_printf("sa\n");
 }
 
 void	sb(t_stack *b)
@@ -67,7 +68,7 @@ void	sb(t_stack *b)
 	// sb (swap b): Swap the first 2 elements at the top of stack b.
 	// Do nothing if there is only one element or none.
 	swap(b);
-	printf("sb\n");
+	ft_printf("sb\n");
 }
 
 void	ss(t_stack *b, t_stack *a)
@@ -75,5 +76,5 @@ void	ss(t_stack *b, t_stack *a)
 	// ss : sa and sb at the same time.
 	swap(a);
 	swap(b);
-	printf("ss\n");
+	ft_printf("ss\n");
 }
