@@ -14,7 +14,8 @@
 #include "../push_swap.h"
 #include "../libft/libft.h"
 
-static int	digit_check(char *checkme)/*
+static int	digit_check(char *checkme)// here must be called an error if nuber is more than INT_MAX
+/*
 digit_check(): 
 	rejects leading + signs and allows a lone - to pass initial check but then 
 	fails on empty string — cover + and - properly and reject strings like "+" 
@@ -25,7 +26,6 @@ digit_check():
 		return (0);
 	if (checkme[i] == '-')
 		i++;
-		// here must be called an erron if nuber is more than INT_MAX
 	if (checkme[i] == '\0')
 		return (0);
 	while (checkme[i])

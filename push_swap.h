@@ -44,7 +44,7 @@ void	rrb(t_stack *b);
 void	rrr(t_stack *a, t_stack *b);
 
 /* core helpers */
-// parser-local helpers (dup-check and adjust_stack) are internal to parse/
+// parser-local helpers (dup-check and fill_stack) are internal to parse/
 int		parse_args(int argc, char **argv, t_stack *a);
 void	push_swap(t_stack *a, t_stack *b);
 void	k_sort(t_stack *a, t_stack *b);
