@@ -11,14 +11,14 @@
 /* ************************************************************************** */
 
 # include "push_swap.h"
-# include "libft/ft_printf/ft_printf.h"
+# include "libft/libft.h"
 //https://www.geeksforgeeks.org/dsa/insertion-in-doubly-circular-linked-list/
 
 void	push(t_stack *src_stk, t_stack *dst_stk)
 {
 	t_node	*node;
 
-	if (!src_stk || !dst_stk)
+	if (!src_stk || !dst_stk || !src_stk->first)
 		return ;
 	node = src_stk->first;
 	if (dst_stk->first == NULL)

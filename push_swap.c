@@ -6,7 +6,7 @@
 /*   By: akechedz <akechedz@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 20:23:33 by akechedz          #+#    #+#             */
-/*   Updated: 2026/02/28 16:37:33 by akechedz         ###   ########.fr       */
+/*   Updated: 2026/03/03 12:14:35 by akechedz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include <limits.h> //FIXME: remove if INT_MAX unused
 #include <stdlib.h>
 #include "libft/libft.h"
-#include "libft/ft_printf/ft_printf.h"
 
 /* void	push_swap()
 {
@@ -24,73 +23,12 @@
 	//https://www.google.com/search?q=push+swap+ksort&sca_esv=a87a460474998c14&udm=50&fbs=ADc_l-YGrpJMQtvjQ6h14rj-dfIrH4mwN5r0Z1FZtFNB2w3Upe2HDPC6akWpYUJBWeXXRd1nD-EOaE0XinGd5KvoJHG8OW6hbPG5HGkmH5eSOG4TMBnyznkwl4rk7eTLPmGiiMXA5VY9M9TuEf30xK4inDhkSZpsG7LKn-gYXluNSgL4chfqr1ROt-6fxN4aMa1bK4-MNo7i&aep=1&ntc=1&sa=X&ved=2ahUKEwjQoqPq3K6SAxXK5QIHHWcdEVUQ2J8OegQICRAD&biw=2663&bih=1297&dpr=1&aic=0&mstk=AUtExfDtognJwVWGkKvQQlQCGVZoGPYfdpx7o5VD0dJh4EdPIt1tGMJZQrxkicIJ5BM7no-Xu_YlcPMl9ruPdBgbKde30pYb2dzfj8IVLqqKvbmGhz26ohjHq6Ylz3TiOh9m0x_BnIBAIg8l-kaymlE3mYP5SbeJzJQsS5c&csuir=1
 } */
 
-t_node	*new_node(int num)
+/* parser-local helpers moved to parse/parse.c */
+
+int	ft_atoi_safe(const char *str)
 {
-	t_node	*element;
-
-	element = malloc(sizeof(t_node));
-	if (!element)
-		return (NULL);
-	element->data = num;
-	element->next = NULL;
-	element->prev = NULL;
-	return (element);
-}
-
-//TODO: rename to check_dublicates
-int	check_stack(t_stack *stack, int new_data)
-{
-	t_node	*tmp;
-
-	if (!stack || !stack->first)
-		return (1);
-	tmp = stack->last;
-	while (tmp->prev)
-	{
-		if (tmp->data == new_data)
-			return (0);
-		tmp = tmp->prev;
-	}
-	//TODO: Printing error message outside of this function
-	ft_printf("Error");
-	return (1);
-}
-
-t_stack	*fill_stack(t_stack *stack, int new_data)
-{
-	t_node	*element;
-
-	element = new_node(new_data);
-	if (!stack->first)
-	{
-		element->next = NULL;
-		element->prev = NULL;
-		/*element->next = element->prev;// looping*/
-		stack->first = element;
-		stack->last = element;
-	}
-	//TODO: Wrong plase!!!
-	//TODO: Move checking outside this function
-	else if (!check_stack(stack, new_data))
-		return (stack);
-	else
-	{
-		// t_node *last = head->prev; 
-		element->next = stack->first;
-		element->next->prev = element;
-		element->prev = NULL;
-		stack->first = element;
-		// stack->last->next = NULL;
-		stack->first = element;
-	}
-	return (stack);
-}
-
-/* 
-int	ft_atoi(const char *str)
-{
-	int	neg;
-	int	result;
+	int				neg;
+	unsigned long	result;
 
 	neg = 0;
 	result = 0;
@@ -112,11 +50,11 @@ int	ft_atoi(const char *str)
 	}
 	if (result > INT_MAX)
 		result = INT_MAX;
-	if (neg == 1)
+	result = (int)result;
+	if (neg)
 		result *= -1;
 	return (result);
 }
-*/
 
 void	print_list(t_node *head)
 {
@@ -136,29 +74,29 @@ void	print_list(t_node *head)
 	return ;
 }
 
-int	check_digits(char *checkme)
+static void	free_stack(t_stack *s)
 {
-	int	i;
+	t_node *curr;
+	t_node *next;
 
-	i = 0;
-	if (checkme[i] == '-')
-		i++;
-	if (checkme[i] == '\0')
-		return (0);
-	while (checkme[i])
+	if (!s)
+		return ;
+	curr = s->first;
+	while (curr)
 	{
-		if (!ft_isdigit(checkme[i]))
-			return (0);
-		i++;
+		next = curr->next;
+		free(curr);
+		curr = next;
 	}
-	return (1);
+	free(s);
 }
 
+// parsing helpers moved to parse/parse.c
+
 int	main(int argc, char **argv)//TODO: rename this func to push_swap
-{	
-	t_stack	*a;
-	t_stack	*b;
-	int		num;
+{    
+	t_stack    *a;
+	t_stack    *b;
 
 	a = calloc(1, sizeof(t_stack));
 	if (!a)
@@ -167,18 +105,11 @@ int	main(int argc, char **argv)//TODO: rename this func to push_swap
 	if (!b)
 		return (1);
 
-	//TODO: wrong!!!
-	a->size = argc;
-	while (argc > 1)
+	if (!parse_args(argc, argv, a))
 	{
-		argc--;
-		if (!check_digits(argv[argc]))
-			return (ft_printf("Error"), 0);
-		num = ft_atoi(argv[argc]);
-		//TODO: if (check_dublicates)
-		ft_printf(">%d\n", num);
-		//TODO: add_to_stack
-		fill_stack(a, num);
+		free_stack(a);
+		free_stack(b);
+		return (ft_printf("Error\n"), 1);
 	}
 	// b->first = NULL;
 /* 	print_list(a->first);
@@ -192,6 +123,8 @@ int	main(int argc, char **argv)//TODO: rename this func to push_swap
 	print_list(a->first);
 	print_list(b->first); */
 	k_sort(a, b);
+	free_stack(a);
+	free_stack(b);
 	return (0);
 }
 /*

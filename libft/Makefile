@@ -79,7 +79,7 @@ $(NAME): $(OBJ)
 	ar rc $(NAME) $(OBJ)
 
 %.o: %.c
-	$(CC) $(CCFLAGS) -I. -c $< -o $@
+	$(CC) $(CCFLAGS) -I. -Ift_printf -c $< -o $@
 
 clean:
 	rm -f $(OBJ) $(BONUS_OBJ)

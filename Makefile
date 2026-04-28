@@ -6,7 +6,9 @@ SRCS = push_swap.c \
 	stk_ops/push.c \
 	stk_ops/swap.c \
 	stk_ops/rotate.c \
-	stk_ops/reverse_rotate.c
+	stk_ops/reverse_rotate.c \
+	sort_algo/k_sort.c \
+	parse/parse.c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -15,7 +17,7 @@ LIBFT_LIB = $(LIBFT_FOLDER)/libft.a
 
 NAME = push_swap
 
-all: $(NAME)
+all: $(LIBFT_LIB) $(NAME)
 
 # libtmp.a
 # -ltmp -> lib tmp .a
@@ -28,15 +30,26 @@ $(LIBFT_LIB) :
 	make -C $(LIBFT_FOLDER)
 
 clean:
+	make -C $(LIBFT_FOLDER) clean
 	rm -f $(OBJS)
 
 fclean: clean
+	make -C $(LIBFT_FOLDER) fclean
 	rm -f $(NAME)
 
 re: fclean all
 
 test: main.o $(OBJS)
-	$(CC) $(CFLAGS) $^ -o test
+	# Run valgrind on the built program if available, otherwise run program normally
+	@echo "Building $(NAME) for test..."
+	@$(MAKE) $(NAME)
+	@if command -v valgrind >/dev/null 2>&1; then \
+		echo "Running valgrind..."; \
+		valgrind --leak-check=full --show-leak-kinds=all ./$(NAME); \
+	else \
+		echo "valgrind not found — running program instead"; \
+		./$(NAME); \
+	fi
 
 %.o: %.c
 	$(CC) $(CFLAGS) -I. -I$(LIBFT_FOLDER) -c $< -o $@

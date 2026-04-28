@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akechedz <akechedz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akechedz <akechedz@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/06 15:42:48 by akechedz          #+#    #+#             */
-/*   Updated: 2025/12/11 16:37:12 by akechedz         ###   ########.fr       */
+/*   Updated: 2026/03/01 16:52:36 by akechedz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdlib.h>
-#include "ft_printf.h"
+#include <stdarg.h>
+#include "libft.h"
 
 int	ft_putchar(char c)
 {

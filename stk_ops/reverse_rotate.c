@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 # include "push_swap.h"
-# include "libft/ft_printf/ft_printf.h"
+# include "libft/libft.h"
 
 void	reverse_rotate(t_stack *s)
 {

@@ -56,7 +56,7 @@ int	main(void) // hardcoded values
 // 			return (ft_printf("Error"), 0);
 // 		num = ft_atoi(argv[argc]);
 // 		ft_printf(">%d\n", num);
-// 		fill_stack(a, num);
+// 		adjust_stack(a, num);
 // 	}
 // 	// b->first = NULL;
 // 	/* 	print_list(a->first);
