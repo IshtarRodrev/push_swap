@@ -60,7 +60,15 @@ void	ft_putnbr_fd(int n, int fd);
 t_list	*ft_lstnew(void *content);
 int		ft_lstsize(t_list *lst);
 
-/* ft_printf (now part of libft) */
-int		ft_printf(const char *format, ...);
+/* ft_printf helpers and API */
+# define PTRNULL "(nil)"
+# define NPTRSIZE 5
+
+int	ft_putptr_ul(unsigned long ptr);
+int	ft_putnbr(int n);
+int	ft_putnbr_unsigned(unsigned int n);
+int	ft_puthex_unsigned(unsigned int n, int uppercase);
+
+int	ft_printf(const char *format, ...);
 
 #endif

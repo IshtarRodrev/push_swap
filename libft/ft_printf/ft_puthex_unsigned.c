@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_puthex_unsigned.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akechedz <akechedz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akechedz <akechedz@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 20:53:11 by akechedz          #+#    #+#             */
-/*   Updated: 2025/12/09 21:04:42 by akechedz         ###   ########.fr       */
+/*   Updated: 2026/05/06 18:49:44 by akechedz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 static size_t	count_hex_digits(unsigned int n)
 {

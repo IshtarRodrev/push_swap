@@ -4,3 +4,4 @@
 *.gch
 /misc/*
 .vscode
+push_swap

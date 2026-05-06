@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
 #include <stdlib.h>
 #include "../push_swap.h"
 #include "../libft/libft.h"
@@ -37,17 +38,36 @@ digit_check():
 	return (1);
 }
 
-static void	free_tokens(char **tokens)
+static void	free_arr(char **arr)
 {
 	int i = 0;
-	if (!tokens)
+	if (!arr)
 		return ;
-	while (tokens[i])
+	while (arr[i])
 	{
-		free(tokens[i]);
+		free(arr[i]);
 		i++;
 	}
-	free(tokens);
+	free(arr);
+}
+
+static void	free_stk(t_stack *stack)
+{
+	t_node *curr;
+	t_node *next;
+
+	if (!stack)
+		return ;
+	curr = stack->first;
+	while (curr)
+	{
+		next = curr->next;
+		free(curr);
+		curr = next;
+	}
+	stack->first = NULL;
+	stack->last = NULL;
+	stack->size = 0;
 }
 
 /* parser-local stack helpers */
@@ -86,26 +106,16 @@ static t_stack *adjust_stack(t_stack *stack, int new_data)
 		stack->size = 1;
 		return (stack);
 	}
-	if (!dub_check(stack, new_data))//FIXME:duplicate handling is incorrect; 
-
-/*TODO: ft_atoi no integer overflow/range checking; 
-int overflow / range: 
-	ft_atoi() returns an int with undefined behavior on overflow. 
-	Replace/augment with strtoll/ft_atoll and explicitly check the parsed value 
-	is within INT_MIN..INT_MAX. On out-of-range, print "Error" and stop.*/
-/*TODO: numeric parsing misses + and overflow detection.
-digit_check(): 
-	rejects leading + signs and allows a lone - to pass initial check but then 
-	fails on empty string — cover + and - properly and reject strings like "+" 
-	or "-" (no digits). Use isdigit for the rest.*/
+	if (!dub_check(stack, new_data)) // duplicate found
 	{
-		ft_printf("Error\n");
+		write(1, "Error\n", 6);
+		free_stk(stack);
 		return (NULL);
 	}
 	element = malloc(sizeof(t_node));
 	if (!element)
 		return (NULL);
-	element->data = new_data; 
+	element->data = new_data;
 	element->next = stack->first;
 	stack->first->prev = element;
 	element->prev = NULL;
@@ -117,7 +127,7 @@ digit_check():
 int	parse_args(int argc, char **argv, t_stack *a)
 {
 	int i;
-	char **tokens;
+	char **arr;
 	int j;
 	int num;
 
@@ -126,27 +136,27 @@ int	parse_args(int argc, char **argv, t_stack *a)
 	i = 1;
 	while (i < argc)
 	{
-		tokens = ft_split(argv[i], ' ');
-		if (!tokens)
+		arr = ft_split(argv[i], ' ');
+		if (!arr)
 			return (0);
 		j = 0;
-		while (tokens[j])
+		while (arr[j])
 		{
-			if (!digit_check(tokens[j]))
+			if (!digit_check(arr[j]))
 			{
-				free_tokens(tokens);
+				free_arr(arr);
 				ft_printf("Error\n");
 				return (0);
 			}
-			num = ft_atoi(tokens[j]);
+			num = ft_atoi(arr[j]);
 			if (!adjust_stack(a, num))
 			{
-				free_tokens(tokens);
+				free_arr(arr);
 				return (0);
 			}
 			j++;
 		}
-		free_tokens(tokens);
+		free_arr(arr);
 		i++;
 	}
 	return (1);

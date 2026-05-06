@@ -38,12 +38,47 @@ void	k_sort(t_stack *a, t_stack *b)
 	}
 }
 
+static int	get_max_index(t_stack *b)
+{
+	t_node  *cur;
+	int     max;
+
+	if (!b->first)
+		return (0);
+	cur = b->first;
+	max = cur->index;
+	while (cur)
+	{
+		if (cur->index > max)
+			max = cur->index;
+		cur = cur->next;
+	}
+	return (max);
+}
+
+static size_t	get_position(t_stack *b, int target)
+{
+	t_node  *cur;
+	size_t  pos;
+
+	pos = 0;
+	cur = b->first;
+	while (cur)
+	{
+		if (cur->index == target)
+			return (pos);
+		pos++;
+		cur = cur->next;
+	}
+	return (pos);
+}
+
 void	reintegrate(t_stack *a, t_stack *b) //FIXME: this is pseudocode
 {
 	while (b->first)//do until B is empty
 	{
-		int max_index;
-		int pos;
+		int     max_index;
+		size_t  pos;
 
 		max_index = get_max_index(b);
 		pos = get_position(b, max_index);

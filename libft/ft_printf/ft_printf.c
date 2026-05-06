@@ -14,6 +14,7 @@
 #include <stdlib.h>
 #include <stdarg.h>
 #include "libft.h"
+#include "ft_printf.h"
 
 int	ft_putchar(char c)
 {

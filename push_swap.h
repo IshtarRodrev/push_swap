@@ -20,6 +20,7 @@ typedef struct s_node
 	int				data;
 	struct s_node	*next;
 	struct s_node	*prev;
+	int             index;
 }t_node;
 
 typedef struct s_stack
@@ -27,7 +28,6 @@ typedef struct s_stack
 	t_node	*first;
 	t_node	*last;
 	size_t	size;
-	int		index;
 }t_stack;
 
 /* stack operations (wrappers that print the operation) */
