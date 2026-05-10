@@ -5,3 +5,5 @@
 /misc/*
 .vscode
 push_swap
+.gdbcmds
+main.c

@@ -70,5 +70,6 @@ int	ft_putnbr_unsigned(unsigned int n);
 int	ft_puthex_unsigned(unsigned int n, int uppercase);
 
 int	ft_printf(const char *format, ...);
+long	ft_atol(char *str);
 
 #endif

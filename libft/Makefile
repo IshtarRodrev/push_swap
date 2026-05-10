@@ -18,7 +18,7 @@ NAME = libft.a
 
 CC = cc
 
-CCFLAGS = -Wall -Wextra -Werror 
+CCFLAGS = -Wall -Wextra -Werror -g
 
 # SRC is a variable containing all .c files required to build the project
 	# Note that every file name has to be separated by a space and that I 

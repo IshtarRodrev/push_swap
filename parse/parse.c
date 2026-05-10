@@ -12,31 +12,9 @@
 
 #include <unistd.h>
 #include <stdlib.h>
+#include <limits.h>
 #include "../push_swap.h"
 #include "../libft/libft.h"
-
-static int	digit_check(char *checkme)// here must be called an error if nuber is more than INT_MAX
-/*
-digit_check(): 
-	rejects leading + signs and allows a lone - to pass initial check but then 
-	fails on empty string — cover + and - properly and reject strings like "+" 
-	or "-" (no digits). Use isdigit for the rest.*/
-{
-	int i = 0;
-	if (!checkme)
-		return (0);
-	if (checkme[i] == '-')
-		i++;
-	if (checkme[i] == '\0')
-		return (0);
-	while (checkme[i])
-	{
-		if (!ft_isdigit(checkme[i]))
-			return (0);
-		i++;
-	}
-	return (1);
-}
 
 static void	free_arr(char **arr)
 {
@@ -70,7 +48,22 @@ static void	free_stk(t_stack *stack)
 	stack->size = 0;
 }
 
-/* parser-local stack helpers */
+static int	atoi_precheck(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i]) 
+	{
+		if (str[0] == '-' || str[0] == '+')
+			i++;
+		if (!ft_isdigit(str[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 static int	dub_check(t_stack *stack, int new_data)
 {
 	t_node *tmp;
@@ -106,11 +99,10 @@ static t_stack *adjust_stack(t_stack *stack, int new_data)
 		stack->size = 1;
 		return (stack);
 	}
-	if (!dub_check(stack, new_data)) // duplicate found
+	if (!dub_check(stack, new_data)) // if duplicate found throw err_msg()
 	{
-		write(1, "Error\n", 6);
 		free_stk(stack);
-		return (NULL);
+		return (0);
 	}
 	element = malloc(sizeof(t_node));
 	if (!element)
@@ -123,13 +115,35 @@ static t_stack *adjust_stack(t_stack *stack, int new_data)
 	stack->size += 1;
 	return (stack);
 }
+int	fill_stk(char **arr, t_stack *a)
+{
+	int		i;
+	long	num;
 
-int	parse_args(int argc, char **argv, t_stack *a)
+	i = 0;
+	if (!a)
+		return (0);
+	/* don't re-initialize the stack here: parse_args may call fill_stk
+	   for each argv entry; preserve previously pushed elements */
+	while (arr[i])
+	{
+		if (!atoi_precheck(arr[i]))
+			return (0);
+		num = ft_atol(arr[i]);
+		if (num < INT_MIN || num > INT_MAX || !adjust_stack(a, (int)num))
+			return (0);
+		i++;
+	}
+	/* `adjust_stack` updates `a->size` as elements are pushed.
+	   Do not overwrite it here (fill_stk may be called multiple times). */
+	return (1);
+}
+
+//TODO: Change this to atol to avoid integer overflow
+int	parse_args(int argc, char **argv, t_stack *a) 
 {
 	int i;
 	char **arr;
-	int j;
-	int num;
 
 	if (!a)
 		return (0);
@@ -139,22 +153,10 @@ int	parse_args(int argc, char **argv, t_stack *a)
 		arr = ft_split(argv[i], ' ');
 		if (!arr)
 			return (0);
-		j = 0;
-		while (arr[j])
+		if (!fill_stk(arr, a))
 		{
-			if (!digit_check(arr[j]))
-			{
-				free_arr(arr);
-				ft_printf("Error\n");
-				return (0);
-			}
-			num = ft_atoi(arr[j]);
-			if (!adjust_stack(a, num))
-			{
-				free_arr(arr);
-				return (0);
-			}
-			j++;
+			free_arr(arr);
+			return (0);
 		}
 		free_arr(arr);
 		i++;

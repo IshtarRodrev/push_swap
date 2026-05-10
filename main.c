@@ -1,7 +1,28 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include "push_swap.h"
+# include "libft/libft.h"
 
+// ./push_swap 2 1 3 6 5 8  
+int	main(int argc, char **argv)
+{
+	t_stack	*a;
+	t_stack	*b;
+
+	a = stk_init();  
+	if (!parse_args(argc, argv, a))
+	{
+		stk_free(a);
+		//stk_free(b);
+		return (ft_printf("Error\n"), 1);
+	}
+	b = stk_init();
+ 	print_list(a->first);
+	ft_printf("A_SIZE=%d", a->size);
+ 	print_list(b->first);
+}
+
+/*
 int	main(void) // hardcoded values
 {
 	//t_node	value = {123, NULL, NULL};
@@ -22,19 +43,25 @@ int	main(void) // hardcoded values
 
 	sa(&st);
 }
+*/
 
-// int	main(int argc, char **argv)
-// {
-// 	t_stack	*a;
-// 	t_stack	*b;
-// 	int		num;
+/*
+int	main2(int argc, char **argv)
+{
+  t_stack	*a;
+  t_stack	*b;
 
-// 	a = calloc(1, sizeof(t_stack));
-// 	if (!a)
-// 		return (0);
-// 	b = calloc(1, sizeof(t_stack));
-// 	if (!b)
-// 		return (0);
+  stk_init(a);  
+  if (!parse_args(argc, argv, a))
+	{
+		stk_free(a);
+		//stk_free(b);
+		return (ft_printf("Error\n"), 1);
+	}
+  //stk_init(b);
+ 	print_list(a->first);
+  ft_printf("A_SIZE=%d", a->size);
+  */
 // 	while (argc > 1)
 // 	{
 // 		argc--;
@@ -57,7 +84,7 @@ int	main(void) // hardcoded values
 // 	print_list(b->first); */
 // 	push_swap(a, b);
 // 	return (1);
-// }
+//  }
 /* 
 # include <stdlib.h>
 

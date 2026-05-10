@@ -1,14 +1,16 @@
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 SRCS = push_swap.c \
+	main.c \
 	stk_ops/push.c \
 	stk_ops/swap.c \
 	stk_ops/rotate.c \
 	stk_ops/reverse_rotate.c \
 	sort_algo/k_sort.c \
-	parse/parse.c
+	parse/parse.c \
+	utils/ft_atol.c
 
 OBJS = $(SRCS:.c=.o)
 

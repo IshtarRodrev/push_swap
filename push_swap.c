@@ -6,7 +6,7 @@
 /*   By: akechedz <akechedz@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 20:23:33 by akechedz          #+#    #+#             */
-/*   Updated: 2026/03/03 12:14:35 by akechedz         ###   ########.fr       */
+/*   Updated: 2026/05/08 19:09:11 by akechedz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,37 +25,6 @@
 
 /* parser-local helpers moved to parse/parse.c */
 
-int	ft_atoi_safe(const char *str)
-{
-	int				neg;
-	unsigned long	result;
-
-	neg = 0;
-	result = 0;
-	while ((*str >= '\t' && *str <= '\r') || *str == ' ' )
-	{
-		str++;
-	}
-	if (*str == '+' || *str == '-')
-	{
-		if (*str == '-')
-			neg = 1;
-		str++;
-	}
-	while (*str >= '0' && *str <= '9')
-	{
-		result *= 10;
-		result += (*str - 48);
-		str++;
-	}
-	if (result > INT_MAX)
-		result = INT_MAX;
-	result = (int)result;
-	if (neg)
-		result *= -1;
-	return (result);
-}
-
 void	print_list(t_node *head)
 {
 	t_node	*curr;
@@ -65,8 +34,10 @@ void	print_list(t_node *head)
 	curr = head;
 	while (curr)
 	{
-		ft_printf("%d ", curr->data);
+		ft_printf("%d -> ", curr->data);
 		curr = curr->next;
+		if (curr == NULL)
+			ft_printf("NULL");
 		// if (curr == head)
 		// 	break ;
 	}
@@ -74,7 +45,7 @@ void	print_list(t_node *head)
 	return ;
 }
 
-static void	free_stack(t_stack *s)
+void	stk_free(t_stack *s)
 {
 	t_node *curr;
 	t_node *next;
@@ -91,28 +62,43 @@ static void	free_stack(t_stack *s)
 	free(s);
 }
 
-// parsing helpers moved to parse/parse.c
+t_stack *stk_init(void)
+{
+	t_stack * stk;
 
+	stk = calloc(1, sizeof(t_stack));
+	if (!stk)
+		return (NULL);
+	stk->first = NULL;
+	stk->last = NULL;
+	stk->size = 0;
+	return (stk);
+}
+
+// ./push_swap 2 1 3 6 5 8  
+
+/*
 int	main(int argc, char **argv)//TODO: rename this func to push_swap
 {    
 	t_stack    *a;
 	t_stack    *b;
 
+	if (argc < 2)
+		return (1);
 	a = calloc(1, sizeof(t_stack));
 	if (!a)
 		return (1);
 	b = calloc(1, sizeof(t_stack));
 	if (!b)
 		return (1);
-
 	if (!parse_args(argc, argv, a))
 	{
-		free_stack(a);
-		free_stack(b);
+		stk_free(a);
+		stk_free(b);
 		return (ft_printf("Error\n"), 1);
 	}
 	// b->first = NULL;
-/* 	print_list(a->first);
+ 	print_list(a->first);
 	pa(a, b);
 	pa(a, b);
 	print_list(a->first);
@@ -121,12 +107,13 @@ int	main(int argc, char **argv)//TODO: rename this func to push_swap
 	ra(a);
 	print_list(a->first);
 	print_list(a->first);
-	print_list(b->first); */
-	k_sort(a, b);
-	free_stack(a);
-	free_stack(b);
+	print_list(b->first);
+//	k_sort(a, b);
+	stk_free(a);
+	stk_free(b);
 	return (0);
 }
+*/
 /*
 sa()
 {
