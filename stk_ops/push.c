@@ -21,15 +21,26 @@ void	push(t_stack *src_stk, t_stack *dst_stk)
 	if (!src_stk || !dst_stk || !src_stk->first)
 		return ;
 	node = src_stk->first;
-	if (dst_stk->first == NULL)
-		dst_stk->last = node;
+
+	// detach from source
 	src_stk->first = node->next;
 	if (src_stk->first)
 		src_stk->first->prev = NULL;
+	else
+		src_stk->last = NULL; //turns empty
+	// attach to destination top
+	node->prev = NULL;
 	node->next = dst_stk->first;
 	if (dst_stk->first)
 		dst_stk->first->prev = node;
+	else
+		dst_stk->last = node; // dst was empty, node is also last
 	dst_stk->first = node;
+
+	// update sizes
+	if (src_stk->size > 0)
+		src_stk->size -= 1;
+	dst_stk->size += 1;
 }
 
 void	pa(t_stack *b, t_stack *a)

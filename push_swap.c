@@ -6,7 +6,7 @@
 /*   By: akechedz <akechedz@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 20:23:33 by akechedz          #+#    #+#             */
-/*   Updated: 2026/05/11 18:41:57 by akechedz         ###   ########.fr       */
+/*   Updated: 2026/05/11 19:49:48 by akechedz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	print_list(t_node *head)
 	curr = head;
 	while (curr)
 	{
-		ft_printf("%d -> ", curr->data);
+		ft_printf("%d[%d] -> ", curr->data, curr->index);
 		curr = curr->next;
 		if (curr == NULL)
 			ft_printf("NULL");
