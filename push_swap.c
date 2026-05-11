@@ -6,7 +6,7 @@
 /*   By: akechedz <akechedz@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 20:23:33 by akechedz          #+#    #+#             */
-/*   Updated: 2026/05/08 19:09:11 by akechedz         ###   ########.fr       */
+/*   Updated: 2026/05/11 18:41:57 by akechedz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,18 @@ t_stack *stk_init(void)
 	stk->size = 0;
 	return (stk);
 }
+/*
+void stk_normilize(t_stack *stk)
+{
+	t_node	*curr;
+	int		min_idx;
+
+	curr = stk->first;
+	while (curr)
+	{
+		curr = curr->next;
+	}
+}*/
 
 // ./push_swap 2 1 3 6 5 8  
 

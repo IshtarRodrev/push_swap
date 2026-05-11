@@ -16,10 +16,21 @@ int	main(int argc, char **argv)
 		//stk_free(b);
 		return (ft_printf("Error\n"), 1);
 	}
+  print_list(a->first);
 	b = stk_init();
- 	print_list(a->first);
-	ft_printf("A_SIZE=%d", a->size);
- 	print_list(b->first);
+  if (!b)
+  {
+    stk_free(a);
+    return (ft_printf("Error\n"), 1);
+  }
+  /* apply k-sort: distribute from A to B, then reintegrate */
+  k_sort(a, b);
+  reintegrate(a, b);
+  ft_printf("A_SIZE=%zu\n", a->size);
+  print_list(a->first);
+  stk_free(a);
+  stk_free(b);
+  return (0);
 }
 
 /*

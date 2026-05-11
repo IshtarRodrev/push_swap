@@ -12,6 +12,8 @@
 
 #include "../push_swap.h"
 
+static int	get_max_index(t_stack *b);
+void	reintegrate(t_stack *a, t_stack *b);
 
 void	k_sort(t_stack *a, t_stack *b)
 {

@@ -48,8 +48,9 @@ void	rrr(t_stack *a, t_stack *b);
 int		parse_args(int argc, char **argv, t_stack *a);
 void	push_swap(t_stack *a, t_stack *b);
 void	k_sort(t_stack *a, t_stack *b);
+t_stack *stk_init(void);
+void	reintegrate(t_stack *a, t_stack *b);
 void	print_list(t_node *head);
 void	stk_free(t_stack *s);
-t_stack	*stk_init(void);
 
 #endif
