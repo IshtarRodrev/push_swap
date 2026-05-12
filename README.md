@@ -12,9 +12,9 @@ Create main.c in the push_swap directory. The code is provided below.
 	###main.c
 
 	```C
-# include <stdlib.h>
-# include <stdio.h>
-# include "push_swap.h"
+#include <stdlib.h>
+#include <stdio.h>
+#include "push_swap.h"
 
 int	main(void) // hardcoded values
 {
@@ -56,7 +56,7 @@ int	main(void) // hardcoded values
 // 			return (ft_printf("Error"), 0);
 // 		num = ft_atoi(argv[argc]);
 // 		ft_printf(">%d\n", num);
-// 		adjust_stack(a, num);
+// 		push_back_2_stk(a, num);
 // 	}
 // 	// b->first = NULL;
 // 	/* 	print_list(a->first);

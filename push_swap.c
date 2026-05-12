@@ -6,7 +6,7 @@
 /*   By: akechedz <akechedz@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 20:23:33 by akechedz          #+#    #+#             */
-/*   Updated: 2026/05/11 19:49:48 by akechedz         ###   ########.fr       */
+/*   Updated: 2026/05/12 21:35:37 by akechedz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,21 +45,23 @@ void	print_list(t_node *head)
 	return ;
 }
 
-void	stk_free(t_stack *s)
+void	stk_free(t_stack *stack)
 {
 	t_node *curr;
 	t_node *next;
 
-	if (!s)
+	if (!stack)
 		return ;
-	curr = s->first;
+	curr = stack->first;
 	while (curr)
 	{
 		next = curr->next;
 		free(curr);
 		curr = next;
 	}
-	free(s);
+	stack->first = NULL;
+	stack->last = NULL;
+	stack->size = 0;
 }
 
 t_stack *stk_init(void)
@@ -74,18 +76,30 @@ t_stack *stk_init(void)
 	stk->size = 0;
 	return (stk);
 }
-/*
-void stk_normilize(t_stack *stk)
-{
-	t_node	*curr;
-	int		min_idx;
 
-	curr = stk->first;
-	while (curr)
+void stk_normalize(t_stack *stk)
+{
+	t_node  *cur;
+	t_node  *tmp;
+	int     rank;
+
+	if (!stk || !stk->first)
+		return ;
+	cur = stk->first;
+	while (cur)
 	{
-		curr = curr->next;
+		rank = 0;
+		tmp = stk->first;
+		while (tmp)
+		{
+			if (tmp->data < cur->data)
+				rank++;
+			tmp = tmp->next;
+		}
+		cur->index = rank;
+		cur = cur->next;
 	}
-}*/
+}
 
 // ./push_swap 2 1 3 6 5 8  
 

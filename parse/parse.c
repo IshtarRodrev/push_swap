@@ -16,7 +16,7 @@
 #include "../push_swap.h"
 #include "../libft/libft.h"
 
-static void	free_arr(char **arr)
+void	arr_free(char **arr)
 {
 	int i = 0;
 	if (!arr)
@@ -29,34 +29,15 @@ static void	free_arr(char **arr)
 	free(arr);
 }
 
-static void	free_stk(t_stack *stack)
-{
-	t_node *curr;
-	t_node *next;
-
-	if (!stack)
-		return ;
-	curr = stack->first;
-	while (curr)
-	{
-		next = curr->next;
-		free(curr);
-		curr = next;
-	}
-	stack->first = NULL;
-	stack->last = NULL;
-	stack->size = 0;
-}
-
 static int	atoi_precheck(char *str)
 {
 	int	i;
 
 	i = 0;
+	if (str[0] == '-' || str[0] == '+')
+		i++;
 	while (str[i]) 
 	{
-		if (str[0] == '-' || str[0] == '+')
-			i++;
 		if (!ft_isdigit(str[i]))
 			return (0);
 		i++;
@@ -80,7 +61,7 @@ static int	dub_check(t_stack *stack, int new_data)
 	return (1);
 }
 
-static t_stack *adjust_stack(t_stack *stack, int new_data)
+static t_stack *push_back_2_stk(t_stack *stack, int new_data)
 {
 	t_node *element;
 
@@ -101,7 +82,7 @@ static t_stack *adjust_stack(t_stack *stack, int new_data)
 	}
 	if (!dub_check(stack, new_data)) // if duplicate found throw err_msg()
 	{
-		free_stk(stack);
+		stk_free(stack);
 		return (0);
 	}
 	element = malloc(sizeof(t_node));
@@ -115,7 +96,7 @@ static t_stack *adjust_stack(t_stack *stack, int new_data)
 	stack->size += 1;
 	return (stack);
 }
-int	fill_stk(char **arr, t_stack *a)
+int	stk_fill(char **arr, t_stack *a)
 {
 	int		i;
 	long	num;
@@ -123,19 +104,21 @@ int	fill_stk(char **arr, t_stack *a)
 	i = 0;
 	if (!a)
 		return (0);
-	/* don't re-initialize the stack here: parse_args may call fill_stk
+	/* don't re-initialize the stack here: parse_args may call stk_fill
 	   for each argv entry; preserve previously pushed elements */
 	while (arr[i])
 	{
 		if (!atoi_precheck(arr[i]))
 			return (0);
 		num = ft_atol(arr[i]);
-		if (num < INT_MIN || num > INT_MAX || !adjust_stack(a, (int)num))
+		if (num < INT_MIN || num > INT_MAX || !push_back_2_stk(a, (int)num))
 			return (0);
 		i++;
 	}
-	/* `adjust_stack` updates `a->size` as elements are pushed.
-	   Do not overwrite it here (fill_stk may be called multiple times). */
+	/* `push_back_2_stk` updates `a->size` as elements are pushed.
+	   Do not overwrite it here (stk_fill may be called multiple times). */
+	/* TODO: indexes must be atributed here.  */
+	stk_normalize(a);
 	return (1);
 }
 
@@ -153,12 +136,12 @@ int	parse_args(int argc, char **argv, t_stack *a)
 		arr = ft_split(argv[i], ' ');
 		if (!arr)
 			return (0);
-		if (!fill_stk(arr, a))
+		if (!stk_fill(arr, a))
 		{
-			free_arr(arr);
+			arr_free(arr);
 			return (0);
 		}
-		free_arr(arr);
+		arr_free(arr);
 		i++;
 	}
 	return (1);

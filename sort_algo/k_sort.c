@@ -26,10 +26,10 @@ void	k_sort(t_stack *a, t_stack *b)
 	threshold = 0;
 	while (a->first)
 	{
-		if (a->first->data <= threshold + delta)
+		if (a->first->index <= threshold + delta)
 		{
 			pb(a, b);
-			if (b->first->data <= threshold)
+			if (b->first->index <= threshold)
 				rb(b);
 			threshold++;
 		}

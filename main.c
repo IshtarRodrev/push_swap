@@ -9,7 +9,9 @@ int	main(int argc, char **argv)
 	t_stack	*a;
 	t_stack	*b;
 
-	a = stk_init();  
+	a = stk_init();
+	if (!a)
+		return (1);
 	if (!parse_args(argc, argv, a))
 	{
 		stk_free(a);
@@ -25,8 +27,8 @@ int	main(int argc, char **argv)
 		return (ft_printf("Error\n"), 1);
 	}
 	k_sort(a, b);
-	print_list(b->first);
-	ft_printf("B_SIZE=%d\n", b->size);
+	//print_list(b->first);
+	//ft_printf("B_SIZE=%d\n", b->size);
 	reintegrate(a, b);
 	print_list(a->first);
 	ft_printf("A_SIZE=%d\n", a->size);
@@ -82,7 +84,7 @@ int	main2(int argc, char **argv)
 // 			return (ft_printf("Error"), 0);
 // 		num = ft_atoi(argv[argc]);
 // 		ft_printf(">%d\n", num);
-// 		adjust_stack(a, num);
+// 		push_back_2_stk(a, num);
 // 	}
 // 	// b->first = NULL;
 // 	/* 	print_list(a->first);
