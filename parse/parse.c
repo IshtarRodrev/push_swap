@@ -89,11 +89,13 @@ static t_stack *push_back_2_stk(t_stack *stack, int new_data)
 	if (!element)
 		return (NULL);
 	element->data = new_data;
-	element->next = stack->first;
-	stack->first->prev = element;
-	element->prev = NULL;
-	stack->first = element;
+	element->next = NULL;
+	element->prev = stack->last;
+	if (stack->last)
+		stack->last->next = element;
+	stack->last = element;
 	stack->size += 1;
+	/* if first was NULL it was handled earlier; keep first unchanged */
 	return (stack);
 }
 int	stk_fill(char **arr, t_stack *a)
