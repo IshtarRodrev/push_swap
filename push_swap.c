@@ -3,25 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akechedz <akechedz@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: akechedz <akechedz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 20:23:33 by akechedz          #+#    #+#             */
-/*   Updated: 2026/05/16 20:19:37 by akechedz         ###   ########.fr       */
+/*   Updated: 2026/05/16 21:53:53 by akechedz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <limits.h> //FIXME: remove if INT_MAX unused
 #include <stdlib.h>
 #include "libft/libft.h"
-
-/* void	push_swap()
-{
-	//the magic;
-	//https://pythontutor.com/visualize.html#mode=edit
-	//https://medium.com/@brakebein42/k-distribution-sort-applied-to-the-push-swap-problem-ae2d96d68376
-	//https://www.google.com/search?q=push+swap+ksort&sca_esv=a87a460474998c14&udm=50&fbs=ADc_l-YGrpJMQtvjQ6h14rj-dfIrH4mwN5r0Z1FZtFNB2w3Upe2HDPC6akWpYUJBWeXXRd1nD-EOaE0XinGd5KvoJHG8OW6hbPG5HGkmH5eSOG4TMBnyznkwl4rk7eTLPmGiiMXA5VY9M9TuEf30xK4inDhkSZpsG7LKn-gYXluNSgL4chfqr1ROt-6fxN4aMa1bK4-MNo7i&aep=1&ntc=1&sa=X&ved=2ahUKEwjQoqPq3K6SAxXK5QIHHWcdEVUQ2J8OegQICRAD&biw=2663&bih=1297&dpr=1&aic=0&mstk=AUtExfDtognJwVWGkKvQQlQCGVZoGPYfdpx7o5VD0dJh4EdPIt1tGMJZQrxkicIJ5BM7no-Xu_YlcPMl9ruPdBgbKde30pYb2dzfj8IVLqqKvbmGhz26ohjHq6Ylz3TiOh9m0x_BnIBAIg8l-kaymlE3mYP5SbeJzJQsS5c&csuir=1
-} */
 
 void	print_list(t_node *head)
 {
@@ -36,8 +27,6 @@ void	print_list(t_node *head)
 		curr = curr->next;
 		if (curr == NULL)
 			ft_printf("NULL");
-		// if (curr == head)
-		// 	break ;
 	}
 	ft_printf("\n");
 	return ;
@@ -45,8 +34,8 @@ void	print_list(t_node *head)
 
 void	stk_free(t_stack *stack)
 {
-	t_node *curr;
-	t_node *next;
+	t_node	*curr;
+	t_node	*next;
 
 	if (!stack)
 		return ;
@@ -63,9 +52,9 @@ void	stk_free(t_stack *stack)
 	free(stack);
 }
 
-t_stack *stk_init(void)
+t_stack	*stk_init(void)
 {
-	t_stack * stk;
+	t_stack	*stk;
 
 	stk = calloc(1, sizeof(t_stack));
 	if (!stk)
@@ -76,11 +65,11 @@ t_stack *stk_init(void)
 	return (stk);
 }
 
-void stk_normalize(t_stack *stk)
+void	stk_normalize(t_stack *stk)
 {
-	t_node  *cur;
-	t_node  *tmp;
-	int     rank;
+	t_node	*cur;
+	t_node	*tmp;
+	int		rank;
 
 	if (!stk || !stk->first)
 		return ;

@@ -12,29 +12,48 @@ Create main.c in the push_swap directory. The code is provided below.
 	###main.c
 
 	```C
-#include <stdlib.h>
-#include <stdio.h>
-#include "push_swap.h"
+# include <stdlib.h>
+# include <stdio.h>
+# include "push_swap.h"
+# include "libft/libft.h"
 
-int	main(void) // hardcoded values
+int	main(int argc, char **argv)
 {
-	//t_node	value = {123, NULL, NULL};
-	t_node	*head = NULL;
-	t_node	*tmp = NULL;
-	t_stack	st;
+	t_stack	*a;
+	t_stack	*b;
 
-	head = calloc(1, sizeof(t_node));
-	head->data = 10;
-	tmp = calloc(1, sizeof(t_node));
-	tmp->data = 20;
-
-	head->next = tmp;
-	tmp->prev = head;
-
-	st.first = head;
-	st.last = tmp;
-
-	sa(&st);
+	a = stk_init();
+	if (!a)
+		return (1);
+	if (!parse_args(argc, argv, a))
+	{
+		stk_free(a);
+		//stk_free(b);
+		return (ft_printf("Error\n"), 1);
+	}
+#ifdef DEBUG
+	print_list(a->first);
+	ft_printf("A_SIZE=%d\n", a->size);
+#endif
+	b = stk_init();
+	if (!b)
+	{
+		stk_free(a);
+		return (ft_printf("Error\n"), 1);
+	}
+	k_sort(a, b);
+#ifdef DEBUG
+	print_list(b->first);
+	ft_printf("B_SIZE=%d\n", b->size);
+#endif
+	reintegrate(a, b);
+#ifdef DEBUG
+	print_list(a->first);
+	ft_printf("A_SIZE=%d\n", a->size);
+#endif
+	stk_free(a);
+	stk_free(b);
+	return (0);
 }
 
 // int	main(int argc, char **argv)
@@ -81,6 +100,8 @@ https://www.geeksforgeeks.org/dsa/insertion-in-doubly-circular-linked-list/
 https://pythontutor.com/visualize.html#mode=edit
 https://push-swap42-visualizer.vercel.app/
 https://medium.com/@brakebein42/k-distribution-sort-applied-to-the-push-swap-problem-ae2d96d68376
+https://www.google.com/search?q=push+swap+ksort&sca_esv=a87a460474998c14&udm=50&fbs=ADc_l-YGrpJMQtvjQ6h14rj-dfIrH4mwN5r0Z1FZtFNB2w3Upe2HDPC6akWpYUJBWeXXRd1nD-EOaE0XinGd5KvoJHG8OW6hbPG5HGkmH5eSOG4TMBnyznkwl4rk7eTLPmGiiMXA5VY9M9TuEf30xK4inDhkSZpsG7LKn-gYXluNSgL4chfqr1ROt-6fxN4aMa1bK4-MNo7i&aep=1&ntc=1&sa=X&ved=2ahUKEwjQoqPq3K6SAxXK5QIHHWcdEVUQ2J8OegQICRAD&biw=2663&bih=1297&dpr=1&aic=0&mstk=AUtExfDtognJwVWGkKvQQlQCGVZoGPYfdpx7o5VD0dJh4EdPIt1tGMJZQrxkicIJ5BM7no-Xu_YlcPMl9ruPdBgbKde30pYb2dzfj8IVLqqKvbmGhz26ohjHq6Ylz3TiOh9m0x_BnIBAIg8l-kaymlE3mYP5SbeJzJQsS5c&csuir=1
+
 # Additional
 Additional sections may be required depending on the project (e.g., usage
 examples, feature list, technical choices, etc.).

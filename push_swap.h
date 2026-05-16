@@ -20,15 +20,15 @@ typedef struct s_node
 	int				data;
 	struct s_node	*next;
 	struct s_node	*prev;
-	int             index;
-}t_node;
+	int				index;
+}	t_node;
 
 typedef struct s_stack
 {
 	t_node	*first;
 	t_node	*last;
 	size_t	size;
-}t_stack;
+}	t_stack;
 
 /* stack operations (wrappers that print the operation) */
 void	sa(t_stack *a);
@@ -48,7 +48,7 @@ void	rrr(t_stack *a, t_stack *b);
 int		parse_args(int argc, char **argv, t_stack *a);
 void	push_swap(t_stack *a, t_stack *b);
 void	k_sort(t_stack *a, t_stack *b);
-t_stack *stk_init(void);
+t_stack	*stk_init(void);
 void	stk_normalize(t_stack *stk);
 void	reintegrate(t_stack *a, t_stack *b);
 void	print_list(t_node *head);

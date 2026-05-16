@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akechedz <akechedz@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: akechedz <akechedz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 16:20:27 by akechedz          #+#    #+#             */
-/*   Updated: 2026/05/16 20:09:12 by akechedz         ###   ########.fr       */
+/*   Updated: 2026/05/16 21:55:54 by akechedz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-#include <stddef.h>
-#include <unistd.h>
+# include <stddef.h>
+# include <unistd.h>
 
 typedef struct s_list
 {
@@ -65,12 +65,11 @@ int		ft_lstsize(t_list *lst);
 # define PTRNULL "(nil)"
 # define NPTRSIZE 5
 
-int	ft_putptr_ul(unsigned long ptr);
-int	ft_putnbr(int n);
-int	ft_putnbr_unsigned(unsigned int n);
-int	ft_puthex_unsigned(unsigned int n, int uppercase);
-
-int	ft_printf(const char *format, ...);
+int		ft_putptr_ul(unsigned long ptr);
+int		ft_putnbr(int n);
+int		ft_putnbr_unsigned(unsigned int n);
+int		ft_puthex_unsigned(unsigned int n, int uppercase);
+int		ft_printf(const char *format, ...);
 long	ft_atol(char *str);
 
 #endif

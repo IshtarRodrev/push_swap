@@ -1,7 +1,19 @@
-# include <stdlib.h>
-# include <stdio.h>
-# include "push_swap.h"
-# include "libft/libft.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akechedz <akechedz@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/05/16 21:14:20 by akechedz          #+#    #+#             */
+/*   Updated: 2026/05/16 21:45:49 by akechedz         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdlib.h>
+#include <stdio.h>
+#include "push_swap.h"
+#include "libft/libft.h"
 
 // ./push_swap 2 1 3 6 5 8  
 int	main(int argc, char **argv)
@@ -15,7 +27,6 @@ int	main(int argc, char **argv)
 	if (!parse_args(argc, argv, a))
 	{
 		stk_free(a);
-		//stk_free(b);
 		return (ft_printf("Error\n"), 1);
 	}
 #ifdef DEBUG
@@ -26,6 +37,7 @@ int	main(int argc, char **argv)
 	if (!b)
 	{
 		stk_free(a);
+		stk_free(b);
 		return (ft_printf("Error\n"), 1);
 	}
 	k_sort(a, b);

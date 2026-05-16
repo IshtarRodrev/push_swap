@@ -13,7 +13,7 @@
 #include "../push_swap.h"
 
 static int	get_max_index(t_stack *b);
-void	reintegrate(t_stack *a, t_stack *b);
+void		reintegrate(t_stack *a, t_stack *b);
 
 void	k_sort(t_stack *a, t_stack *b)
 {
@@ -42,8 +42,8 @@ void	k_sort(t_stack *a, t_stack *b)
 
 static int	get_max_index(t_stack *b)
 {
-	t_node  *cur;
-	int     max;
+	t_node	*cur;
+	int		max;
 
 	if (!b->first)
 		return (0);
@@ -60,8 +60,8 @@ static int	get_max_index(t_stack *b)
 
 static size_t	get_position(t_stack *b, int target)
 {
-	t_node  *cur;
-	size_t  pos;
+	t_node	*cur;
+	size_t	pos;
 
 	pos = 0;
 	cur = b->first;
@@ -75,13 +75,13 @@ static size_t	get_position(t_stack *b, int target)
 	return (pos);
 }
 
-void	reintegrate(t_stack *a, t_stack *b) //FIXME: this is pseudocode
+void	reintegrate(t_stack *a, t_stack *b)
 {
-	while (b->first)//do until B is empty
-	{
-		int     max_index;
-		size_t  pos;
+	int		max_index;
+	size_t	pos;
 
+	while (b->first)
+	{
 		max_index = get_max_index(b);
 		pos = get_position(b, max_index);
 		if (pos <= b->size / 2)

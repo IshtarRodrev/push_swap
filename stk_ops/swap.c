@@ -57,23 +57,18 @@ void	swap3(t_stack *src_stk)
 
 void	sa(t_stack *a)
 {
-	// sa (swap a): Swap the first 2 elements at the top of stack a.
-	// Do nothing if there is only one element or none.
 	swap(a);
 	ft_printf("sa\n");
 }
 
 void	sb(t_stack *b)
 {
-	// sb (swap b): Swap the first 2 elements at the top of stack b.
-	// Do nothing if there is only one element or none.
 	swap(b);
 	ft_printf("sb\n");
 }
 
 void	ss(t_stack *b, t_stack *a)
 {
-	// ss : sa and sb at the same time.
 	swap(a);
 	swap(b);
 	ft_printf("ss\n");

@@ -18,7 +18,9 @@
 
 void	arr_free(char **arr)
 {
-	int i = 0;
+	int	i;
+
+	i = 0;
 	if (!arr)
 		return ;
 	while (arr[i])
@@ -36,7 +38,7 @@ static int	atoi_precheck(char *str)
 	i = 0;
 	if (str[0] == '-' || str[0] == '+')
 		i++;
-	while (str[i]) 
+	while (str[i])
 	{
 		if (!ft_isdigit(str[i]))
 			return (0);
@@ -47,7 +49,7 @@ static int	atoi_precheck(char *str)
 
 static int	dub_check(t_stack *stack, int new_data)
 {
-	t_node *tmp;
+	t_node	*tmp;
 
 	if (!stack || !stack->first)
 		return (1);
@@ -61,9 +63,9 @@ static int	dub_check(t_stack *stack, int new_data)
 	return (1);
 }
 
-static t_stack *push_back_2_stk(t_stack *stack, int new_data)
+static t_stack	*push_back_2_stk(t_stack *stack, int new_data)
 {
-	t_node *element;
+	t_node	*element;
 
 	if (!stack)
 		return (NULL);
@@ -80,7 +82,7 @@ static t_stack *push_back_2_stk(t_stack *stack, int new_data)
 		stack->size = 1;
 		return (stack);
 	}
-	if (!dub_check(stack, new_data)) // if duplicate found throw err_msg()
+	if (!dub_check(stack, new_data))
 	{
 		stk_free(stack);
 		return (0);
@@ -95,9 +97,9 @@ static t_stack *push_back_2_stk(t_stack *stack, int new_data)
 		stack->last->next = element;
 	stack->last = element;
 	stack->size += 1;
-	/* if first was NULL it was handled earlier; keep first unchanged */
 	return (stack);
 }
+
 int	stk_fill(char **arr, t_stack *a)
 {
 	int		i;
@@ -106,8 +108,6 @@ int	stk_fill(char **arr, t_stack *a)
 	i = 0;
 	if (!a)
 		return (0);
-	/* don't re-initialize the stack here: parse_args may call stk_fill
-	   for each argv entry; preserve previously pushed elements */
 	while (arr[i])
 	{
 		if (!atoi_precheck(arr[i]))
@@ -117,18 +117,14 @@ int	stk_fill(char **arr, t_stack *a)
 			return (0);
 		i++;
 	}
-	/* `push_back_2_stk` updates `a->size` as elements are pushed.
-	   Do not overwrite it here (stk_fill may be called multiple times). */
-	/* TODO: indexes must be atributed here.  */
 	stk_normalize(a);
 	return (1);
 }
 
-//TODO: Change this to atol to avoid integer overflow
-int	parse_args(int argc, char **argv, t_stack *a) 
+int	parse_args(int argc, char **argv, t_stack *a)
 {
-	int i;
-	char **arr;
+	int		i;
+	char	**arr;
 
 	if (!a)
 		return (0);

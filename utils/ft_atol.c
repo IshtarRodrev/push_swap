@@ -1,4 +1,15 @@
-/* ft_atol: convert numeric string to long (handles optional leading '+'/'-') */
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akechedz <akechedz@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/05/16 21:46:20 by akechedz          #+#    #+#             */
+/*   Updated: 2026/05/16 21:46:20 by akechedz         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stddef.h>
 
 long	ft_atol(char *str)
