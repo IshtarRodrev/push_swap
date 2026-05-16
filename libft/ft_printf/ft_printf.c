@@ -6,7 +6,7 @@
 /*   By: akechedz <akechedz@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/06 15:42:48 by akechedz          #+#    #+#             */
-/*   Updated: 2026/03/01 16:52:36 by akechedz         ###   ########.fr       */
+/*   Updated: 2026/05/15 17:53:41 by akechedz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include <stdlib.h>
 #include <stdarg.h>
 #include "libft.h"
-#include "ft_printf.h"
 
 int	ft_putchar(char c)
 {

@@ -18,8 +18,10 @@ int	main(int argc, char **argv)
 		//stk_free(b);
 		return (ft_printf("Error\n"), 1);
 	}
+#ifdef DEBUG
 	print_list(a->first);
 	ft_printf("A_SIZE=%d\n", a->size);
+#endif
 	b = stk_init();
 	if (!b)
 	{
@@ -27,11 +29,15 @@ int	main(int argc, char **argv)
 		return (ft_printf("Error\n"), 1);
 	}
 	k_sort(a, b);
-	//print_list(b->first);
-	//ft_printf("B_SIZE=%d\n", b->size);
+#ifdef DEBUG
+	print_list(b->first);
+	ft_printf("B_SIZE=%d\n", b->size);
+#endif
 	reintegrate(a, b);
+#ifdef DEBUG
 	print_list(a->first);
 	ft_printf("A_SIZE=%d\n", a->size);
+#endif
 	stk_free(a);
 	stk_free(b);
 	return (0);

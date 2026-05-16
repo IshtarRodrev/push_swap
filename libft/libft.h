@@ -6,14 +6,15 @@
 /*   By: akechedz <akechedz@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 16:20:27 by akechedz          #+#    #+#             */
-/*   Updated: 2026/03/01 16:52:48 by akechedz         ###   ########.fr       */
+/*   Updated: 2026/05/16 20:09:12 by akechedz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <stddef.h>
+#include <stddef.h>
+#include <unistd.h>
 
 typedef struct s_list
 {
