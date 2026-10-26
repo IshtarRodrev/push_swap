@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akechedz <akechedz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akechedz <akechedz@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 21:14:20 by akechedz          #+#    #+#             */
-/*   Updated: 2026/10/25 20:13:51 by akechedz         ###   ########.fr       */
+/*   Updated: 2026/10/26 19:01:52 by akechedz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	main(int argc, char **argv)
 		stk_free(b);
 		return (ft_printf("Error\n"), 1);
 	}
-	if (a->size <= 5)
+	if (a->size < 7)
 		mini_sort(a, b);
 	else
 		k_sort(a, b);
