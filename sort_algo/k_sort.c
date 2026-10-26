@@ -97,7 +97,6 @@ void	reintegrate(t_stack *a, t_stack *b)
 		pa(b, a);
 	}
 }
-
 /*
 echo "pb\npb\npb\nrrb\npa\nrrb\npa\npa" | ./checker_linux 3 2 1 
 echo "pb\npb\npb\nrrb\npa\nrrb\npa\npa" | ./misc/checker_linux 3 2 1

@@ -6,7 +6,7 @@
 /*   By: akechedz <akechedz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 20:23:33 by akechedz          #+#    #+#             */
-/*   Updated: 2026/05/16 21:53:53 by akechedz         ###   ########.fr       */
+/*   Updated: 2026/05/20 13:16:14 by akechedz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,29 @@ void	stk_normalize(t_stack *stk)
 		cur = cur->next;
 	}
 }
+
+//TODO1: check_sorted()
+
+int	check_sorted(t_stack *stk)
+{
+	int		i;
+	t_node	*curr;
+
+	i = 0;
+	curr = stk->first;
+	while (curr != NULL)
+	{
+		if (curr->index != i)
+			return (0);
+		curr = curr->next;
+		i++;
+	}
+	return (1);
+}
+
+//TODO2: small_sort()
+
+//TODO3: empty string check???
 
 // ./push_swap 2 1 3 6 5 8
 

@@ -6,7 +6,7 @@
 /*   By: akechedz <akechedz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 21:14:20 by akechedz          #+#    #+#             */
-/*   Updated: 2026/05/16 21:45:49 by akechedz         ###   ########.fr       */
+/*   Updated: 2026/10/25 20:13:51 by akechedz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,10 @@ int	main(int argc, char **argv)
 		stk_free(b);
 		return (ft_printf("Error\n"), 1);
 	}
-	k_sort(a, b);
+	if (a->size <= 5)
+		mini_sort(a, b);
+	else
+		k_sort(a, b);
 #ifdef DEBUG
 	print_list(b->first);
 	ft_printf("B_SIZE=%d\n", b->size);
@@ -52,6 +55,8 @@ int	main(int argc, char **argv)
 #endif
 	stk_free(a);
 	stk_free(b);
+	// if (!check_sort(a))
+	// 	return (ft_printf("Error\n"), 1);
 	return (0);
 }
 

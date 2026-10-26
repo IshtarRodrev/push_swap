@@ -7,3 +7,4 @@
 push_swap
 .gdbcmds
 main.c
+*.pdf

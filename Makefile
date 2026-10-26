@@ -9,6 +9,7 @@ SRCS = push_swap.c \
 	stk_ops/rotate.c \
 	stk_ops/reverse_rotate.c \
 	sort_algo/k_sort.c \
+	sort_algo/mini_sort.c \
 	parse/parse.c \
 	utils/ft_atol.c
 
