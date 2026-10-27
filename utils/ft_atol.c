@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <stddef.h>
+#include <limits.h>
 
 long	ft_atol(char *str)
 {
@@ -30,6 +31,8 @@ long	ft_atol(char *str)
 	while (*str && *str >= '0' && *str <= '9')
 	{
 		num = (num * 10) + (*str - '0');
+		if (num > (long)INT_MAX + 1)
+			break ;
 		str++;
 	}
 	return (num * sign);
