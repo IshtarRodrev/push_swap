@@ -53,6 +53,9 @@ t_stack	*stk_init(void);
 void	stk_normalize(t_stack *stk);
 void	reintegrate(t_stack *a, t_stack *b);
 int		check_sorted(t_stack *stk);
+void	arr_free(char **arr);
+int		atoi_precheck(char *str);
+int		dub_check(t_stack *stack, int new_data);
 void	print_list(t_node *head);
 void	stk_free(t_stack *stack);
 

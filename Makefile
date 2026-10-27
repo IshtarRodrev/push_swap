@@ -11,6 +11,7 @@ SRCS = push_swap.c \
 	sort_algo/k_sort.c \
 	sort_algo/mini_sort.c \
 	parse/parse.c \
+	parse/validation.c \
 	utils/ft_atol.c
 
 OBJS = $(SRCS:.c=.o)
