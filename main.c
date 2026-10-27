@@ -33,6 +33,8 @@ int	main(int argc, char **argv)
 	print_list(a->first);
 	ft_printf("A_SIZE=%d\n", a->size);
 #endif
+	if (check_sorted(a))
+		return (stk_free(a), 0);
 	b = stk_init();
 	if (!b)
 	{

@@ -89,8 +89,6 @@ void	stk_normalize(t_stack *stk)
 	}
 }
 
-//TODO1: check_sorted()
-
 int	check_sorted(t_stack *stk)
 {
 	int		i;

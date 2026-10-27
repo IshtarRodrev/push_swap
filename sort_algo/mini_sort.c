@@ -12,8 +12,6 @@
 
 #include "../push_swap.h"
 
-static int	is_sorted(t_stack *a);
-
 static void	micro_sort(t_stack *a);
 
 static void	reverse_micro_sort(t_stack *b);
@@ -44,7 +42,7 @@ static void	push_smallest(t_stack *a, t_stack *b, int limit)
 
 void	mini_sort(t_stack *a, t_stack *b)
 {
-	if (!a || !b || is_sorted(a))
+	if (!a || !b || check_sorted(a))
 		return ;
 	if (a->size > 3)
 		push_smallest(a, b, a->size - 3);
@@ -52,20 +50,6 @@ void	mini_sort(t_stack *a, t_stack *b)
 	reverse_micro_sort(b);
 	while (b->first)
 		pa(b, a);
-}
-/*TODO: Does it may make sence to open is_sorted() function so it can be used outside mini_sort*/
-static int	is_sorted(t_stack *a)
-{
-	t_node	*cur;
-
-	cur = a->first;
-	while (cur && cur->next)
-	{
-		if (cur->index > cur->next->index)
-			return (0);
-		cur = cur->next;
-	}
-	return (1);
 }
 
 static void	micro_sort(t_stack *a)
