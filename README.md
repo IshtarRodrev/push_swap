@@ -160,9 +160,11 @@ To use it:
 ```sh
 make main                  # overwrite main.c with the debug version below
 make debug ARG="3 2 1"     # rebuild with -DDEBUG and run ./push_swap 3 2 1
-git checkout main.c        # restore the norm-compliant main.c
+git restore main.c         # restore the norm-compliant main.c
 make re                    # rebuild without debug output
 ```
+
+> **Important:** `make main` overwrites `main.c` with the debug version. Always restore the committed, norm-compliant version afterwards with `git restore main.c`, and check that `git status` no longer lists `main.c` before committing or turning in. This only works if the norm-compliant `main.c` is committed, so commit any changes to it before running `make main`.
 
 `make debug` is the same as `make re CFLAGS="-Wall -Wextra -Werror -g -DDEBUG"` followed by `./push_swap $(ARG)`.
 
