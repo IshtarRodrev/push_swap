@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
-#include "../libft/libft.h"
+#include "push_swap.h"
+#include "libft.h"
 
 int	atoi_precheck(char *str)
 {

@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
 #include <stdlib.h>
-#include "libft/libft.h"
+#include "push_swap.h"
+#include "libft.h"
 
 void	print_list(t_node *head)
 {
@@ -56,7 +56,7 @@ t_stack	*stk_init(void)
 {
 	t_stack	*stk;
 
-	stk = calloc(1, sizeof(t_stack));
+	stk = ft_calloc(1, sizeof(t_stack));
 	if (!stk)
 		return (NULL);
 	stk->first = NULL;
@@ -105,135 +105,3 @@ int	check_sorted(t_stack *stk)
 	}
 	return (1);
 }
-
-//TODO2: small_sort()
-
-//TODO3: empty string check???
-
-// ./push_swap 2 1 3 6 5 8
-
-/*
-int	main(int argc, char **argv)//TODO: rename this func to push_swap
-{    
-	t_stack    *a;
-	t_stack    *b;
-
-	if (argc < 2)
-		return (1);
-	a = calloc(1, sizeof(t_stack));
-	if (!a)
-		return (1);
-	b = calloc(1, sizeof(t_stack));
-	if (!b)
-		return (1);
-	if (!parse_args(argc, argv, a))
-	{
-		stk_free(a);
-		stk_free(b);
-		return (ft_printf("Error\n"), 1);
-	}
-	// b->first = NULL;
- 	print_list(a->first);
-	pa(a, b);
-	pa(a, b);
-	print_list(a->first);
-	pa(a, b);
-	print_list(a->first);
-	ra(a);
-	print_list(a->first);
-	print_list(a->first);
-	print_list(b->first);
-//	k_sort(a, b);
-	stk_free(a);
-	stk_free(b);
-	return (0);
-}
-*/
-/*
-sa()
-{
-	// sa (swap a): Swap the first 2 elements at the top of stack a.
-	// Do nothing if there is only one element or none.
-}
-
-sb()
-{
-	// sb (swap b): Swap the first 2 elements at the top of stack b.
-	// Do nothing if there is only one element or none.
-}
-
-ss()
-{
-	// ss : sa and sb at the same time.
-}
-
-pa()
-{
-	// pa (push a): Take the first element at the top of b and put it at the top of a.
-	// Do nothing if b is empty.
-}
-
-pb()
-{
-	// pb (push b): Take the first element at the top of a and put it at the top of b.
-	// Do nothing if a is empty.
-}
-
-ra()
-{
-	// ra (rotate a): Shift up all elements of stack a by 1.
-	// The first element becomes the last one.
-}
-rb()
-{
-	// rb (rotate b): Shift up all elements of stack b by 1.
-	// The first element becomes the last one.
-}
-rr()
-{
-	// rr : ra and rb at the same time.
-}
-
-rra()
-{
-	// rra (reverse rotate a): Shift down all elements of stack a by 1.
-	// The last element becomes the first one.
-}
-rrb()
-{
-	// rrb (reverse rotate b): Shift down all elements of stack b by 1.
-	// The last element becomes the first one.
-}
-rrr()
-{
-	// rrr : rra and rrb at the same time.
-}
-*/
-/*
-• You have 2 stacks named a and b.
-• At the beginning:
-◦ The stack a contains a random number of unique negative and/or positive
-integers.
-◦ The stack b is empty.
-• The goal is to sort the numbers in stack a in ascending order. To achieve this, you
-have the following operations at your disposal:
-sa (swap a): Swap the first 2 elements at the top of stack a.
-Do nothing if there is only one element or none.
-sb (swap b): Swap the first 2 elements at the top of stack b.
-Do nothing if there is only one element or none.
-ss : sa and sb at the same time.
-pa (push a): Take the first element at the top of b and put it at the top of a.
-Do nothing if b is empty.
-pb (push b): Take the first element at the top of a and put it at the top of b.
-Do nothing if a is empty.
-ra (rotate a): Shift up all elements of stack a by 1.
-The first element becomes the last one.
-rb (rotate b): Shift up all elements of stack b by 1.
-The first element becomes the last one.
-rr : ra and rb at the same time.
-rra (reverse rotate a): Shift down all elements of stack a by 1.
-The last element becomes the first one.
-rrb (reverse rotate b): Shift down all elements of stack b by 1.
-The last element becomes the first one.
-rrr : rra and rrb at the same time. */
-// TODO: NORMALISE DATA!!!

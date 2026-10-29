@@ -36,6 +36,16 @@ $(NAME): $(OBJS) $(LIBFT_LIB)
 $(LIBFT_LIB): FORCE
 	$(MAKE) -C $(LIBFT_FOLDER)
 
+# -I. and -Ilibft add the project root and libft/ to the header search path,
+# so every .c file, in any subfolder, can write #include "push_swap.h" and
+# #include "libft.h" without ../ paths. Without these flags such includes
+# fail with "No such file or directory".
+#
+#   in parse/parse.c, with the flags:      #include "push_swap.h"
+#                                          #include "libft.h"
+#   in parse/parse.c, without the flags:   #include "../push_swap.h"
+#                                          #include "../libft/libft.h"
+#   in main.c, without the flags:          #include "libft/libft.h"
 %.o: %.c $(HEADERS)
 	$(CC) $(CFLAGS) -I. -I$(LIBFT_FOLDER) -c $< -o $@
 

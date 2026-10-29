@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
 #include <limits.h>
+#include "libft.h"
 
 long	ft_atol(char *str)
 {

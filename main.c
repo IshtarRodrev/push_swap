@@ -6,12 +6,12 @@
 /*   By: akechedz <akechedz@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 21:14:20 by akechedz          #+#    #+#             */
-/*   Updated: 2026/10/29 12:00:00 by akechedz         ###   ########.fr       */
+/*   Updated: 2026/10/29 06:02:45 by akechedz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "libft/libft.h"
+#include "libft.h"
 
 int	main(int argc, char **argv)
 {

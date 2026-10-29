@@ -10,11 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include <stdlib.h>
 #include <limits.h>
-#include "../push_swap.h"
-#include "../libft/libft.h"
+#include "push_swap.h"
+#include "libft.h"
 
 void	arr_free(char **arr)
 {
@@ -52,7 +51,7 @@ static t_stack	*push_back_2_stk(t_stack *stack, int new_data)
 	return (stack);
 }
 
-int	stk_fill(char **arr, t_stack *a)
+static int	stk_fill(char **arr, t_stack *a)
 {
 	int		i;
 	long	num;

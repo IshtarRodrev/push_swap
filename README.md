@@ -181,7 +181,7 @@ Other Makefile targets (`ARG` defaults to `2 1 3 6 5 8`):
 #include <stdlib.h>
 #include <stdio.h>
 #include "push_swap.h"
-#include "libft/libft.h"
+#include "libft.h"
 
 int	main(int argc, char **argv)
 {
