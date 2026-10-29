@@ -16,70 +16,61 @@ SRCS = push_swap.c \
 
 OBJS = $(SRCS:.c=.o)
 
+HEADERS = push_swap.h $(LIBFT_FOLDER)/libft.h
+
 LIBFT_FOLDER = libft
-LIBFT_LIB = $(LIBFT_FOLDER)/libft.a 
+LIBFT_LIB = $(LIBFT_FOLDER)/libft.a
 
 NAME = push_swap
 
-all: $(LIBFT_LIB) $(NAME)
+# arguments for run / test / debug: make run ARG="3 2 1"
+ARG ?= 2 1 3 6 5 8
 
-# libtmp.a
-# -ltmp -> lib tmp .a
+all: $(NAME)
 
 # -lft -> libft.a
 $(NAME): $(OBJS) $(LIBFT_LIB)
-	$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT_FOLDER) -lft -I. -o $(@)
+	$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT_FOLDER) -lft -o $(@)
 
-$(LIBFT_LIB) :
-	make -C $(LIBFT_FOLDER)
+# always ask libft's Makefile, it only rebuilds libft.a when its sources change
+$(LIBFT_LIB): FORCE
+	$(MAKE) -C $(LIBFT_FOLDER)
+
+%.o: %.c $(HEADERS)
+	$(CC) $(CFLAGS) -I. -I$(LIBFT_FOLDER) -c $< -o $@
 
 clean:
-	make -C $(LIBFT_FOLDER) clean
+	$(MAKE) -C $(LIBFT_FOLDER) clean
 	rm -f $(OBJS)
 
 fclean: clean
-	make -C $(LIBFT_FOLDER) fclean
+	$(MAKE) -C $(LIBFT_FOLDER) fclean
 	rm -f $(NAME)
 
 re: fclean all
 
-test: main.o $(OBJS)
-	# Run valgrind on the built program if available, otherwise run program normally
-	@echo "Building $(NAME) for test..."
-	@$(MAKE) $(NAME)
+run: $(NAME)
+	./$(NAME) $(ARG)
+
+# valgrind if available, otherwise run the program normally
+test: $(NAME)
 	@if command -v valgrind >/dev/null 2>&1; then \
 		echo "Running valgrind..."; \
-		valgrind --leak-check=full --show-leak-kinds=all ./$(NAME); \
+		valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) $(ARG); \
 	else \
 		echo "valgrind not found — running program instead"; \
-		./$(NAME); \
+		./$(NAME) $(ARG); \
 	fi
 
-%.o: %.c
-	$(CC) $(CFLAGS) -I. -I$(LIBFT_FOLDER) -c $< -o $@
+# rebuild with -DDEBUG to print the stacks between the sorting steps
+debug: fclean
+	$(MAKE) CFLAGS="$(CFLAGS) -DDEBUG"
+	./$(NAME) $(ARG)
 
-# test: main.o $(OBJS)
-# 	$(CC) $(CFLAGS) main.o $(OBJS) -o test
-
-# test: $(OBJ) main.o
-# 	$(CC) $^
-
-# test: $(OBJ) main.o
-# 	$(CC) $(OBJ) main.o -o test.out
-
-# main: 
-# 	cat README.md | grep -i '```C' -A31 | tail -n31 > main.c
-main: 
+# regenerate main.c from the ```C block in README.md
+main:
 	sed -n '/```C/,/```/p' README.md | sed '1d' | sed '/```/d' > main.c
-# block2: 
-# 	sed -n '0,/```C/{/```C/!d}; /```C/,/```/p' README.md | sed '1d;/```/d' > block2.c
 
-# block5: 
-# 	awk '/```C/{c++} c==5{print} /```/{if(c==5)exit}' README.md | sed '/```/d' > block5.c
+FORCE:
 
-run: $(NAME)
-	./$(NAME)
-
-debug: make -g && lldb./a.out
-
-.PHONY: all clean fclean re test run debug
+.PHONY: all clean fclean re run test debug main FORCE
