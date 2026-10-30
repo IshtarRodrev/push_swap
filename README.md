@@ -235,6 +235,7 @@ int	main(int argc, char **argv)
 - [push_swap visualizer](https://push-swap42-visualizer.vercel.app/): animates a list of operations on both stacks.
 - [K-distribution sort applied to the push_swap problem (Medium)](https://medium.com/@brakebein42/k-distribution-sort-applied-to-the-push-swap-problem-ae2d96d68376): the idea behind `k_sort` and `reintegrate`.
 - The 42 `push_swap` subject and the provided `checker_linux` / `checker_Mac` binaries.
+- [K-sort: A new sorting algorithm that beats Heap sort for n <= 70 lakhs! (arXiv)](https://arxiv.org/abs/1107.3622): the paper behind K-sort, a Quick sort variant without an auxiliary array.
 
 ## AI usage
 

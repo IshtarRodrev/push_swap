@@ -2,8 +2,7 @@
 *.o
 *.out
 *.gch
-/misc/*
 .vscode
 push_swap
 .gdbcmds
-*.pdf
+*.sh
